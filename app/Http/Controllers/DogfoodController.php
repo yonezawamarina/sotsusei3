@@ -46,7 +46,10 @@ class DogfoodController extends Controller
      */
     public function show(Dogfood $dogfood)
     {
-        //
+      
+        return view('dogfoods/show',['dogfood' => $dogfood]);
+        
+        
     }
 
     /**

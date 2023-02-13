@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DogController;
 use App\Models\Dog;
 use Illuminate\Http\Request;
+use App\Http\Controllers\DogfoodController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,6 +36,25 @@ Route::prefix('dogs') // 頭に contacts をつける
  Route::post('/{id}/destroy', 'destroy')->name('destroy'); 
  
  });
+ 
+ 
+ Route::get('dogfoods/{dogfood}',[DogfoodController::class,'show'])->name('dogfoods.show');
+ 
+
+ 
+ 
+ 
+ Route::get('/kcal', function () {
+    return view('kcal');
+});
+ 
+
+Route::get('/chartjs', function () {
+    return view('chartjs');
+});
+
+// Route::get('/chart-get', [ChartController::class, 'chartGet'])->name('chart-get');
+
 
 
 Route::get('/', function () {

@@ -28,6 +28,7 @@
                                     <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">ライフステージ</th>
                                     <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">年齢</th>
                                     <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">ドックフード</th>
+                                     <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">必要カロリー</th>
                                     <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">詳細</th>
                                   </tr>
                                 </thead>
@@ -43,6 +44,7 @@
                                     <td class="border-t-2 border-gray-200 px-4 py-3">{{$dog->fix}}</td>
                                     <td class="border-t-2 border-gray-200 px-4 py-3">{{$dog->age}}</td>
                                     <td class="border-t-2 border-gray-200 px-4 py-3">{{$dog->food}}</td>
+                                     <td class="border-t-2 border-gray-200 px-4 py-3">{{$dog->food}}</td>
                                     <td class="border-t-2 border-gray-200 px-4 py-3"><a class='text-blue-500' href="{{route('dogs.show',['id'=>$dog->id])}}">詳細</a></td>
                                     </td>
                                   </tr>
