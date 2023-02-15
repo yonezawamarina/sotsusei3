@@ -1,4 +1,3 @@
-
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
@@ -11,70 +10,72 @@
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                     <section class="text-gray-600 body-font relative">
-                        <form method="post" action="formpost">
+                        <form method="post" action="{{route('dogs.store')}}">
                             @csrf
                           <div class="container px-5  mx-auto">
                         
                             <div class="lg:w-1/2 md:w-2/3 mx-auto">
                               <div class="flex flex-wrap -m-2">
-                                
                                 <div class="p-2 w-full">
                                   <div class="relative">
                                     <label for="name" class="leading-7 text-sm text-gray-600">お名前</label>
-                                    <input type="text" id="name" name="name" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                                    <input type="text" id="name" value={{$name}} name="name" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                                   </div>
                                 </div>
                                 
                                 <div class="p-2 w-full">
                                   <div class="relative">
                                     <label for="breed" class="leading-7 text-sm text-gray-600">犬種</label>
-                                    <input type="text" id="breed" name="breed" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                                    <input type="text" id="breed" value={{$breed}}  name="breed" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                                   </div>
                                 </div>
                                 
                                 <div class="p-2 w-full">
                                   <div class="relative">
                                     <label for="weight" class="leading-7 text-sm text-gray-600">体重</label>
-                                    <input type="text" id="weight" name="weight" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                                    <input type="text" id="weight" value={{$weight}}  name="weight" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                                   </div>
                                 </div>
                                 
                                 <div class="p-2 w-full">
                                   <div class="relative">
                                     <label  for="gender" class="leading-7 text-sm text-gray-600">性別</label></br>
-                                    <input type="radio"  name="gender" value="0"  {{ old ('gender') == '0' ? 'checked' : '' }} checked>男の子
-                                    <input type="radio"  name="gender" value="1"  {{ old ('gender') == '1' ? 'checked' : '' }} checked >女の子
+                                    <!--<input type="radio"  name="gender" value="0">男の子-->
+                                     <input type="text"  name="gender" value={{$gender}} >
+                                     <!--<input type="radio" id="weight" value={{$gender}}  name="weight" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">-->
+                                 
                                   </div>
                                 </div>
                                 
                                 <div class="p-2 w-full">
                                   <div class="relative">
                                     <label for="fix" class="leading-7 text-sm text-gray-600">去勢避妊</label></br>
-                                     <input type="radio"  name="fix" value="0" {{ old ('fix') == '0' ? 'checked' : '' }}checked>している
-                                     <input type="radio"  name="fix" value="1" {{ old ('fix') == '1' ? 'checked' : '' }}checked>していない
+                                     <input type="text"  name="fix" value={{$fix}}>
+                                      <!--<input type="radio"  name="fix" value={{$fix}}>-->
+                                     <!--<input type="radio" id="weight" value={{$fix}}  name="weight" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">-->
+                                     <!--<input type="radio"  name="fix" value="0">している-->
+                                     <!--<input type="radio"  name="fix" value="1">していない-->
                                   </div>
                                 </div>
                                 
                                 <div class="p-2 w-full">
                                   <div class="relative">
                                     <label for="age" class="leading-7 text-sm text-gray-600">年齢</label>
-                                    <input type="text" id="age" name="age" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                                    <input type="text" id="age" value={{$age}} name="age" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                                   </div>
                                 </div>
                                 
                                 <div class="p-2 w-full">
                                   <div class="relative">
                                     <label for="food" class="leading-7 text-sm text-gray-600">食べているドックフード</label>
-                                    <input type="text" id="food" name="food" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                                    <input type="text" id="food"  value={{$food}} name="food" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                                   </div>
                                 </div>
                                 
-                                      
                                 <div class="p-2 w-full">
                                   <div class="relative">
-                                    <label for="daykcal" class="leading-7 text-sm text-gray-600">必要カロリー</label>
-                                   <!--<input type="text" id="foodkcal" name="foodkcal" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">-->
-                                    <div>計算</div>
+                                    <label for="foodkcal" class="leading-7 text-sm text-gray-600">必要カロリー</label>
+                                    <input type="text" id="foodkcal" value={{$daykcl}} name="foodkcal" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                                   </div>
                                 </div>
                            
@@ -99,7 +100,6 @@
 
 
 
-
 <!--<x-app-layout>-->
 <!--    <x-slot name="header">-->
 <!--        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">-->
@@ -118,7 +118,6 @@
                         
 <!--                            <div class="lg:w-1/2 md:w-2/3 mx-auto">-->
 <!--                              <div class="flex flex-wrap -m-2">-->
-                                
 <!--                                <div class="p-2 w-full">-->
 <!--                                  <div class="relative">-->
 <!--                                    <label for="name" class="leading-7 text-sm text-gray-600">お名前</label>-->
@@ -170,12 +169,10 @@
 <!--                                  </div>-->
 <!--                                </div>-->
                                 
-                                      
 <!--                                <div class="p-2 w-full">-->
 <!--                                  <div class="relative">-->
 <!--                                    <label for="foodkcal" class="leading-7 text-sm text-gray-600">必要カロリー</label>-->
-<!--                                   <input type="text" id="foodkcal" name="foodkcal" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">-->
-<!--                                    <div>計算</div>-->
+<!--                                    <input type="text" id="foodkcal" name="foodkcal" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">-->
 <!--                                  </div>-->
 <!--                                </div>-->
                            

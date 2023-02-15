@@ -15,7 +15,44 @@ class DogController extends Controller
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+    
      */
+     
+       public function inputform()
+    {
+        // $data = ['msg'=>"テキストボックスに入力してください。"];
+        // dd($data);
+        return view('dogs.dog');
+    }
+
+    public function formpost(Request $request)
+    {
+        $data = [
+            'name'=>$request->name,
+            'breed'=>$request->breed,
+            'weight'=>$request->weight,
+            'gender'=>$request->gender,
+            'fix'=>$request->fix,
+            'age'=>$request->age,
+            'food'=>$request->food,
+            'daykcl'=>$request->weight * $request->age
+            
+        ];
+        // dd($data);
+        return view('dogs/dogkcl', $data);
+    }
+     
+     
+     
+     
+     
+     
     public function index()
     {
     //   return view('dogs.index');//
@@ -68,6 +105,7 @@ class DogController extends Controller
         	  $dogs->gender   = $request->gender;
         	  $dogs->fix   = $request->fix;
         	  $dogs->age   = $request->age;
+        	  $dogs->food   = $request->food;
         	  $dogs->food   = $request->food;
 	          $dogs->user_id = Auth::id();//ここを追加
 	          $dogs->save(); 

@@ -28,14 +28,17 @@ Route::prefix('dogs') // 頭に contacts をつける
  ->controller(DogController::class) // コントローラ指定(laravel9から)
  ->group(function(){ // グループ化
  Route::get('/', 'index')->name('index'); // 名前つきルート 
- Route::get('/dog', 'create')->name('dogs'); 
- Route::post('/dog', 'store')->name('store'); 
- Route::get('/{id}', 'show')->name('show'); 
- Route::get('/{id}/edit', 'edit')->name('edit'); 
- Route::post('/{id}', 'update')->name('update'); 
- Route::post('/{id}/destroy', 'destroy')->name('destroy'); 
+ Route::get('/dogkcl', 'create')->name('dogs'); 
+ Route::post('/dogkcl', 'store')->name('store'); 
+//  Route::get('/{id}', 'show')->name('show'); 
+//  Route::get('/{id}/edit', 'edit')->name('edit'); 
+//  Route::post('/{id}', 'update')->name('update'); 
+//  Route::post('/{id}/destroy', 'destroy')->name('destroy'); 
  
  });
+ 
+ Route::get('dogs/dog',[DogController::class,'inputform'])->name('inputform');
+ Route::post('dogs/formpost',[DogController::class,'formpost'])->name('formpost');
  
  
  Route::get('dogfoods/{dogfood}',[DogfoodController::class,'show'])->name('dogfoods.show');
