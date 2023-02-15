@@ -45,7 +45,7 @@ class DogController extends Controller
             
         ];
         // dd($data);
-        return view('dogs/dogkcl', $data);
+        return view('dogs/daykcl', $data);
     }
      
      
@@ -83,7 +83,7 @@ class DogController extends Controller
     public function store(Request $request)
     {
         //
-        // dd($request);
+       
         
         // Dog::create([
         //     'name' => $request->name,
@@ -97,8 +97,9 @@ class DogController extends Controller
         // ]);
         
         // return to_route('dogs.index');
-        
+              
         	  $dogs = new Dog;
+        // 	  dd($request);
         	  $dogs->name   = $request->name;
         	  $dogs->breed = $request->breed;
         	  $dogs->weight = $request->weight;
@@ -106,9 +107,11 @@ class DogController extends Controller
         	  $dogs->fix   = $request->fix;
         	  $dogs->age   = $request->age;
         	  $dogs->food   = $request->food;
-        	  $dogs->food   = $request->food;
+        	  $dogs->daykcl   = $request->daykcl;
 	          $dogs->user_id = Auth::id();//ここを追加
+	          
 	          $dogs->save(); 
+	          
 	          return redirect('/');
  
     }

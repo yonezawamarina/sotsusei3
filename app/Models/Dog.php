@@ -18,6 +18,7 @@ class Dog extends Model
         'fix',
         'age',
         'food',
+        'daykcl'
          
         
       ];

@@ -28,8 +28,8 @@ Route::prefix('dogs') // 頭に contacts をつける
  ->controller(DogController::class) // コントローラ指定(laravel9から)
  ->group(function(){ // グループ化
  Route::get('/', 'index')->name('index'); // 名前つきルート 
- Route::get('/dogkcl', 'create')->name('dogs'); 
- Route::post('/dogkcl', 'store')->name('store'); 
+ Route::get('/daykcl', 'create')->name('dogs'); 
+ Route::post('/daykcl', 'store')->name('store'); 
 //  Route::get('/{id}', 'show')->name('show'); 
 //  Route::get('/{id}/edit', 'edit')->name('edit'); 
 //  Route::post('/{id}', 'update')->name('update'); 
@@ -52,9 +52,9 @@ Route::prefix('dogs') // 頭に contacts をつける
 });
  
 
-Route::get('/chartjs', function () {
-    return view('chartjs');
-});
+// Route::get('/chartjs', function () {
+//     return view('chartjs');
+// });
 
 // Route::get('/chart-get', [ChartController::class, 'chartGet'])->name('chart-get');
 

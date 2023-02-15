@@ -43,7 +43,7 @@
                                     <td class="border-t-2 border-gray-200 px-4 py-3">{{$dog->gender}}</td>
                                     <td class="border-t-2 border-gray-200 px-4 py-3">{{$dog->fix}}</td>
                                     <td class="border-t-2 border-gray-200 px-4 py-3">{{$dog->age}}</td>
-                                    <td class="border-t-2 border-gray-200 px-4 py-3">{{""}}</td>
+                                    <td class="border-t-2 border-gray-200 px-4 py-3">{{$dog->daykcl}}</td>
                                      <td class="border-t-2 border-gray-200 px-4 py-3">{{$dog->food}}</td>
                                     <td class="border-t-2 border-gray-200 px-4 py-3"><a class='text-blue-500' href="{{route('dogs.show',['id'=>$dog->id])}}">詳細</a></td>
                                     </td>
