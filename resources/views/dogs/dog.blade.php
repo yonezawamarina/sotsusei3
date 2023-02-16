@@ -49,9 +49,14 @@
                                 
                                 <div class="p-2 w-full">
                                   <div class="relative">
-                                    <label for="fix" class="leading-7 text-sm text-gray-600">去勢避妊</label></br>
-                                     <input type="radio"  name="fix" value="0" {{ old ('fix') == '0' ? 'checked' : '' }}checked>している
-                                     <input type="radio"  name="fix" value="1" {{ old ('fix') == '1' ? 'checked' : '' }}checked>していない
+                                    <label for="fix" class="leading-7 text-sm text-gray-600">ライフステージ</label></br>
+                                     <input type="radio"  name="fix" value="0" {{ old ('fix') == '0' ? 'checked' : '' }}checked>生後4か月までの幼犬</br>
+                                     <input type="radio"  name="fix" value="1" {{ old ('fix') == '1' ? 'checked' : '' }}checked>生後4か月から1年までの幼犬</br>
+                                     <input type="radio"  name="fix" value="2" {{ old ('fix') == '2' ? 'checked' : '' }}checked>避妊・去勢済みの成犬</br>
+                                     <input type="radio"  name="fix" value="3" {{ old ('fix') == '3' ? 'checked' : '' }}checked>避妊・去勢なしの成犬</br>
+                                     <input type="radio"  name="fix" value="4" {{ old ('fix') == '4' ? 'checked' : '' }}checked>7歳以上で避妊・去勢済みの中高齢犬</br>
+                                     <input type="radio"  name="fix" value="5" {{ old ('fix') == '5' ? 'checked' : '' }}checked>7歳以上で避妊・去勢なしの中高齢犬</br>
+                                     <input type="radio"  name="fix" value="6" {{ old ('fix') == '6' ? 'checked' : '' }}checked>肥満傾向の成犬
                                   </div>
                                 </div>
                                 

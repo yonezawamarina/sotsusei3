@@ -23,7 +23,7 @@ return new class extends Migration
             $table->tinyInteger('weight'); // 体重
             $table->boolean('fix'); // 避妊去勢
             $table->string('food', 20); // 市販フード
-            $table->tinyInteger('daykcl'); // 必要カロリー
+            $table->bigInteger('daykcl'); // 必要カロリー
             $table->timestamps();
         });
     }

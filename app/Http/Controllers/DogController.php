@@ -33,6 +33,9 @@ class DogController extends Controller
 
     public function formpost(Request $request)
     {
+        
+   
+        
         $data = [
             'name'=>$request->name,
             'breed'=>$request->breed,
@@ -41,10 +44,11 @@ class DogController extends Controller
             'fix'=>$request->fix,
             'age'=>$request->age,
             'food'=>$request->food,
-            'daykcl'=>$request->weight * $request->age
+            'daykcl'=>round(pow(pow(pow($request->weight,3),0.5),0.5)*70)
+            
             
         ];
-        // dd($data);
+    
         return view('dogs/daykcl', $data);
     }
      
