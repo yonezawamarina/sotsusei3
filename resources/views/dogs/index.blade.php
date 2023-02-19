@@ -12,7 +12,7 @@
                 
                 
                       
-                       <a href="{{route('dogs.dogs')}}" class="text-pink-500">新規登録</a>
+                       <a href="{{route('dogs.create')}}" class="text-pink-500">新規登録</a>
                 
                                         　　　　
                                         　　　　 <!--<div class="lg:w-2/3 w-full mx-auto overflow-auto">-->
@@ -30,6 +30,7 @@
                                     <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">ドックフード</th>
                                      <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">必要カロリー</th>
                                     <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">詳細</th>
+                                    <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">グラフ</th>
                                   </tr>
                                 </thead>
                                 <tbody>
@@ -43,8 +44,8 @@
                                     <td class="border-t-2 border-gray-200 px-4 py-3">{{$dog->gender}}</td>
                                     <td class="border-t-2 border-gray-200 px-4 py-3">{{$dog->fix}}</td>
                                     <td class="border-t-2 border-gray-200 px-4 py-3">{{$dog->age}}</td>
-                                    <td class="border-t-2 border-gray-200 px-4 py-3">{{$dog->daykcl}}</td>
-                                     <td class="border-t-2 border-gray-200 px-4 py-3">{{$dog->food}}</td>
+                                    <td class="border-t-2 border-gray-200 px-4 py-3">{{$dog->food}}</td>
+                                     <td class="border-t-2 border-gray-200 px-4 py-3">{{$dog->daykcl}}</td>
                                     <td class="border-t-2 border-gray-200 px-4 py-3"><a class='text-blue-500' href="{{route('dogs.show',['id'=>$dog->id])}}">詳細</a></td>
                                     </td>
                                   </tr>

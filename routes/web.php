@@ -18,45 +18,32 @@ use App\Http\Controllers\DogfoodController;
 |
 */
 
-// Route::resource('dogs', DogController::class)
-// ->middleware(['auth']); 
 
-// グループ化してまとめるとシンプルに書ける
-Route::prefix('dogs') // 頭に contacts をつける
+Route::prefix('dogs') 
  ->middleware(['auth']) // 認証
  ->name('dogs.')// ルート名
- ->controller(DogController::class) // コントローラ指定(laravel9から)
+ ->controller(DogController::class) // コントローラ指定
  ->group(function(){ // グループ化
- Route::get('/', 'index')->name('index'); // 名前つきルート 
- Route::get('/daykcl', 'create')->name('dogs'); 
- Route::post('/daykcl', 'store')->name('store'); 
-//  Route::get('/{id}', 'show')->name('show'); 
-//  Route::get('/{id}/edit', 'edit')->name('edit'); 
-//  Route::post('/{id}', 'update')->name('update'); 
-//  Route::post('/{id}/destroy', 'destroy')->name('destroy'); 
+ Route::get('/', 'index')->name('index'); // 犬一覧 画面
+ Route::get('/create', 'create')->name('create'); //犬情報入力画面
+ Route::post('/daykcl', 'daykcl')->name('daykcl');//カロリー表示画面
+ Route::post('/', 'store')->name('store'); //DBに保存
+ Route::get('/{id}', 'show')->name('show'); //詳細画面
+ Route::get('/{id}/edit', 'edit')->name('edit'); //編集画面
+ Route::post('/{id}', 'update')->name('update'); //更新
+ Route::post('/{id}/destroy', 'destroy')->name('destroy');//削除 
  
  });
  
- Route::get('dogs/dog',[DogController::class,'inputform'])->name('inputform');
- Route::post('dogs/formpost',[DogController::class,'formpost'])->name('formpost');
- 
+
  
  Route::get('dogfoods/{dogfood}',[DogfoodController::class,'show'])->name('dogfoods.show');
  
 
- 
- 
- 
- Route::get('/kcal', function () {
-    return view('kcal');
-});
- 
 
-// Route::get('/chartjs', function () {
-//     return view('chartjs');
-// });
 
-// Route::get('/chart-get', [ChartController::class, 'chartGet'])->name('chart-get');
+
+
 
 
 

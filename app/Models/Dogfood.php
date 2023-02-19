@@ -9,4 +9,14 @@ class Dogfood extends Model
 {
     use HasFactory;
     protected $table="dogfoods";//追加DogFoodでないと認識しないと思われるからdogfoodsテーブルを認識させる。
+    
+    
+    
+    
+    //dogテーブルとのリレーション（親側）
+    public function getdog(){
+        return $this->hasMany('App/Models/Dog');
+    }
+    
+    
 }

@@ -39,30 +39,47 @@
                                 <div class="p-2 w-full">
                                   <div class="relative">
                                     <label  class="leading-7 text-sm text-gray-600">性別</label></br>
-                                     <div  class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">{{$gender}}</div>
+                                    <input type="radio"  name="gender" value="0" @if($dog->gender == 0) checked @endif>男の子</br>
+                                    <input type="radio"  name="gender" value="1" @if($dog->gender == 1) checked @endif>女の子
+                                     <!--<div  class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">{{$gender}}</div>-->
                                   
                                   </div>
                                 </div>
                                 
                                 <div class="p-2 w-full">
                                   <div class="relative">
-                                    <label for="fix" class="leading-7 text-sm text-gray-600">去勢避妊</label></br>
-                                    <div  class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">{{$fix}}</div>
+                                    <label for="fix" class="leading-7 text-sm text-gray-600">ライフステージ</label></br>
+                                    <input type="radio"  name="fix" value="0" @if($dog->fix == 0) checked @endif>生後4か月までの幼犬</br>
+                                     <input type="radio"  name="fix" value="1" @if($dog->fix == 1) checked @endif>生後4か月から1年までの幼犬</br>
+                                     <input type="radio"  name="fix" value="2" @if($dog->fix == 2) checked @endif>避妊・去勢済みの成犬</br>
+                                     <input type="radio"  name="fix" value="3" @if($dog->fix == 3) checked @endif>避妊・去勢なしの成犬</br>
+                                     <input type="radio"  name="fix" value="4" @if($dog->fix == 4) checked @endif>7歳以上で避妊・去勢済みの中高齢犬</br>
+                                     <input type="radio"  name="fix" value="5" @if($dog->fix == 5) checked @endif>7歳以上で避妊・去勢なしの中高齢犬</br>
+                                     <input type="radio"  name="fix" value="6" @if($dog->fix == 6) checked @endif>肥満傾向の成犬
+                                    <!--<div  class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">{{$fix}}</div>-->
                                   
                                   </div>
                                 </div>
                                 
                                 <div class="p-2 w-full">
                                   <div class="relative">
-                                    <label for="age" class="leading-7 text-sm text-gray-600">年齢</label>
+                                    <label for="age" class="leading-7 text-sm text-gray-600">年齢</label></br>
+                                     
                                     <div  class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">{{$dog->age}}</div>
                                   </div>
                                 </div>
                                 
                                 <div class="p-2 w-full">
                                   <div class="relative">
-                                    <label for="food" class="leading-7 text-sm text-gray-600">食べているドックフード</label>
+                                    <label for="food" class="leading-7 text-sm text-gray-600">ドックフード</label>
                                     <div  class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">{{$dog->food}}</div>
+                                  </div>
+                                </div>
+                                
+                                 <div class="p-2 w-full">
+                                  <div class="relative">
+                                    <label for="food" class="leading-7 text-sm text-gray-600">必要カロリー</label>
+                                    <div  class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">{{$dog->daykcl}}</div>
                                   </div>
                                 </div>
                            
@@ -71,7 +88,7 @@
                                 <button class="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">編集する</button>
                                  </form>
                                   
-                                <form id='delete_{{$dog->id}}'class="mt-40" method='get' action={{route('dogs.destroy',['id' => $dog->id])}}>
+                                <form id='delete_{{$dog->id}}'class="mt-40" method='post' action={{route('dogs.destroy',['id' => $dog->id])}}>
                                    @csrf
                                 <div class="p-2 w-full">
                            

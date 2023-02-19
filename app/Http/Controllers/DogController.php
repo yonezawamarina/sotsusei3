@@ -24,18 +24,18 @@ class DogController extends Controller
     
      */
      
-       public function inputform()
-    {
-        // $data = ['msg'=>"テキストボックスに入力してください。"];
-        // dd($data);
-        return view('dogs.dog');
-    }
+    //   public function inputform()
+    // {
+    //     // $data = ['msg'=>"テキストボックスに入力してください。"];
+    //     // dd($data);
+    //     return view('dogs.dog');
+    // }
 
-    public function formpost(Request $request)
+    public function daykcl(Request $request)
     {
         
    
-        
+      
         $data = [
             'name'=>$request->name,
             'breed'=>$request->breed,
@@ -62,7 +62,12 @@ class DogController extends Controller
     //   return view('dogs.index');//
     
       //自分のuser_idが付与されている投稿だけ取得する
-        $dogs = Dog::where('user_id',Auth::id())->orderBy('created_at', 'asc')->paginate(3);
+        $dogs = Dog::where('user_id',Auth::id())->orderBy('created_at', 'asc')->paginate(30);
+        
+        
+        
+       
+        
       
         return view('dogs.index', compact('dogs'));
     
@@ -75,7 +80,7 @@ class DogController extends Controller
      */
     public function create()
     {
-       return view('dogs.dog'); //
+       return view('dogs.create'); //
     }
 
     /**
@@ -86,22 +91,7 @@ class DogController extends Controller
      */
     public function store(Request $request)
     {
-        //
-       
-        
-        // Dog::create([
-        //     'name' => $request->name,
-        //     'user_id' => $request->user_id
-        //     'breed' => $request->breed,
-        //     'weight' => $request->weight,
-        //     'gender' => $request->gender,
-        //     'fix' => $request->fix,
-        //     'age' => $request->age,
-        //     'food' => $request->food,
-        // ]);
-        
-        // return to_route('dogs.index');
-              
+      
         	  $dogs = new Dog;
         // 	  dd($request);
         	  $dogs->name   = $request->name;
@@ -113,7 +103,6 @@ class DogController extends Controller
         	  $dogs->food   = $request->food;
         	  $dogs->daykcl   = $request->daykcl;
 	          $dogs->user_id = Auth::id();//ここを追加
-	          
 	          $dogs->save(); 
 	          
 	          return redirect('/');
@@ -124,7 +113,6 @@ class DogController extends Controller
 
       public function show($id)
       {
-          
           $dog = Dog::find($id);
           
           if($dog->gender === 0){
@@ -138,14 +126,22 @@ class DogController extends Controller
           
  
       if($dog->fix === 0){
-              $fix = 'している';
-              
-          }else{
-              
-            $fix = 'していない';
+            $fix = '生後4か月までの幼犬';
+          }elseif($dog->fix === 1){
+            $fix = '生後4か月から1年までの幼犬';
+          }elseif($dog->fix === 2){
+            $fix = '避妊・去勢済みの成犬';
+          }elseif($dog->fix === 3){
+            $fix = '避妊・去勢なしの成犬';
+          }elseif($dog->fix === 4){
+            $fix = '7歳以上で避妊・去勢済みの中高齢犬';
+          }elseif($dog->fix === 5){    
+            $fix = '7歳以上で避妊・去勢なしの中高齢犬';
+          }elseif($dog->fix === 6){   
+            $fix = '肥満傾向の成犬';
           }
           
-          
+    
           return view('dogs.show',
           compact('dog','gender','fix'));
           
@@ -166,7 +162,48 @@ class DogController extends Controller
          $dog = Dog::find($id);
          
            return view('dogs.edit', compact('dog'));
-          
          
-}
+     }
+
+
+
+      public function update(Request $request, $id)
+      {
+        
+         $dog = Dog::find($id);
+         
+          $dog->name   = $request->name;
+      	  $dog->breed = $request->breed;
+      	  $dog->weight = $request->weight;
+      	  $dog->gender   = $request->gender;
+      	  $dog->fix   = $request->fix;
+      	  $dog->age   = $request->age;
+      	  $dog->food   = $request->food;
+      	  $dog->daykcl   = $request->daykcl;
+      	 // dd($dog->daykcl);
+         
+          $dog->user_id = Auth::id();//ここを追加
+          $dog->save(); 
+        
+           return to_route('dogs.index');
+         
+     }
+
+
+
+      public function destroy($id)
+      {
+        
+         $dog = Dog::find($id);
+         $dog->delete();
+      	  
+         return to_route('dogs.index');
+         
+     }
+
+
+
+
+
+
 }

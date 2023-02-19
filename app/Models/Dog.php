@@ -22,4 +22,15 @@ class Dog extends Model
          
         
       ];
+      
+      
+      
+       
+    //dogfoodテーブルとのリレーション（従側）
+    public function getdogfood(){
+        return $this->belongsTo('App/Models/Dogfood');
+    }
+      
+      
+      
 }
