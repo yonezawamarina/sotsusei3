@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Dog;
+use App\Models\Dogfood;
+use App\Models\DogBreed;
+
 
 use Validator;  //この1行だけ追加！
 use Illuminate\Http\Request;
@@ -33,9 +36,6 @@ class DogController extends Controller
 
     public function daykcl(Request $request)
     {
-        
-   
-      
         $data = [
             'name'=>$request->name,
             'breed'=>$request->breed,
@@ -59,18 +59,10 @@ class DogController extends Controller
      
     public function index()
     {
-    //   return view('dogs.index');//
-    
+
       //自分のuser_idが付与されている投稿だけ取得する
         $dogs = Dog::where('user_id',Auth::id())->orderBy('created_at', 'asc')->paginate(30);
-        
-        
-        
-       
-        
-      
         return view('dogs.index', compact('dogs'));
-    
     }
 
     /**
@@ -80,7 +72,15 @@ class DogController extends Controller
      */
     public function create()
     {
-       return view('dogs.create'); //
+      $dogs = Dog::get();
+    //   dd($dogs);
+    //   return view('dogs.create',compact('dogs')); //
+       return view('dogs.create',['dogs'=>$dogs]);
+    
+    
+    // $dogs = DogBreed::find(1)->dogs;
+    // $dogbreed = Dog::find(1)->dogbreeds;
+    // dd($dogs,$dogbreed);
     }
 
     /**

@@ -21,9 +21,11 @@ return new class extends Migration
             $table->boolean('gender'); // 性別
             $table->tinyInteger('age'); // 年齢
             $table->tinyInteger('weight'); // 体重
-            $table->boolean('fix'); // 避妊去勢
+            $table->boolean('fix'); // ライフ
             $table->string('food', 20); // 市販フード
             $table->bigInteger('daykcl'); // 必要カロリー
+            $table->foreignId('dog_breeds_id');
+            $table->foreignId('dogfoods_id');
             $table->timestamps();
         });
     }

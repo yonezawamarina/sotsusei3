@@ -10,12 +10,7 @@
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                 
-                
-                      
-                       <!--<a href="{{route('dogs.create')}}" class="text-pink-500">新規登録</a>-->
-                
-                                        　　　　
-                                        　　　　 <!--<div class="lg:w-2/3 w-full mx-auto overflow-auto">-->
+                         　　　　 <!--<div class="lg:w-2/3 w-full mx-auto overflow-auto">-->
                                  <section class="text-gray-600 body-font">
                                           <div class="container px-5 py-24 mx-auto">
                                             <div class="flex flex-col">
@@ -23,7 +18,7 @@
                                                 <div class="w-24 h-full bg-yellow-500"></div>
                                               </div>
                                               <div class="flex flex-wrap sm:flex-row flex-col py-6 mb-12">
-                                                <h1 class="sm:w-2/5 text-gray-900 font-medium title-font text-2xl mb-2 sm:mb-0">家のわんちゃん</h1>
+                                                <h1 class="sm:w-2/5 text-gray-900 font-medium title-font text-2xl mb-2 sm:mb-0">わんちゃん</h1>
                                               </div>
                                             </div>
                                             
@@ -36,10 +31,7 @@
                                                 </div>
                                                 <h2 class="text-xl font-medium title-font text-gray-900 mt-5">{{$dog->name}}</h2><!--名前-->
                                                 <a class='text-blue-500' href="{{route('dogs.show',['id'=>$dog->id])}}">詳細</a>
-                                                  <!--<svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-2" viewBox="0 0 24 24">-->
-                                                  <!--  <path d="M5 12h14M12 5l7 7-7 7"></path>-->
-                                                  <!--</svg>-->
-                                                </a>
+                                              
                                               </div>
                                               @endforeach
                                             </div>

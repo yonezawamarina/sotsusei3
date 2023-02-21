@@ -32,6 +32,20 @@
                                   </div>
                                 </div>
                                 
+                                
+                                        <!--<select>-->
+                                        <!--    @foreach ($dogs as $dog)-->
+                                        <!--        <option>{{$dog->breed->name}}</option>-->
+                                        <!--    @endforeach-->
+                                        <!--</select>-->
+                                        
+                                
+                                
+                                
+                                
+                                
+                                
+                                
                                 <div class="p-2 w-full">
                                   <div class="relative">
                                     <label for="weight" class="leading-7 text-sm text-gray-600">体重</label>
