@@ -28,22 +28,14 @@
                                 <div class="p-2 w-full">
                                   <div class="relative">
                                     <label for="breed" class="leading-7 text-sm text-gray-600">犬種</label>
-                                    <input type="text" id="breed" name="breed" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                                    　<select name="dog_breed_id">
+                                            @foreach ($dog_breeds as $dog_breed)
+                                            <option value="{{ $dog_breed->id }}">{{ $dog_breed->name}}</option>
+                                            @endforeach
+                                        </select> 　　　
+                                    <!--<input type="text" id="breed" name="breed" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">-->
                                   </div>
                                 </div>
-                                
-                                
-                                        <!--<select>-->
-                                        <!--    @foreach ($dogs as $dog)-->
-                                        <!--        <option>{{$dog->breed->name}}</option>-->
-                                        <!--    @endforeach-->
-                                        <!--</select>-->
-                                        
-                                
-                                
-                                
-                                
-                                
                                 
                                 
                                 <div class="p-2 w-full">
@@ -84,11 +76,16 @@
                                 <div class="p-2 w-full">
                                   <div class="relative">
                                     <label for="food" class="leading-7 text-sm text-gray-600">食べているドックフード</label>
-                                    <input type="text" id="food" name="food" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                                    <!--<input type="text" id="food" name="food" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">-->
+                                    　　<select name="dog_food_id">
+                                            @foreach ($dogfoods as $dogfood)
+                                            <option value="{{ $dogfood->id }}">{{ $dogfood->dogfoodname }}</option>
+                                            @endforeach
+                                        </select> 　
                                   </div>
                                 </div>
                                 
-                                      
+                                
                                 <div class="p-2 w-full">
                                   <div class="relative">
                                     <label for="daykcal" class="leading-7 text-sm text-gray-600">必要カロリー</label>

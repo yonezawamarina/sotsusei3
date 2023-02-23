@@ -23,12 +23,19 @@
                                   </div>
                                 </div>
                                 
+                            
+                                
                                 <div class="p-2 w-full">
                                   <div class="relative">
                                     <label for="breed" class="leading-7 text-sm text-gray-600">犬種</label>
-                                    <input type="text" id="breed" value={{$breed}}  name="breed" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                                   　<select name="dog_breed_id">
+                                        <option value="{{ $dog_breed_id }}" @if($dog_breed_id) selected @endif>{{ $dog_breed_id }}</option>
+                                     </select> 　　
                                   </div>
                                 </div>
+                              
+                                
+
                                 
                                 <div class="p-2 w-full">
                                   <div class="relative">
@@ -60,6 +67,7 @@
                                   </div>
                                 </div>
                                 
+                                
                                 <div class="p-2 w-full">
                                   <div class="relative">
                                     <label for="age" class="leading-7 text-sm text-gray-600">年齢</label>
@@ -67,12 +75,20 @@
                                   </div>
                                 </div>
                                 
-                                <div class="p-2 w-full">
+                             
+                                
+                                
+                                 <div class="p-2 w-full">
                                   <div class="relative">
-                                    <label for="food" class="leading-7 text-sm text-gray-600">食べているドックフード</label>
-                                    <input type="text" id="food"  value={{$food}} name="food" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                                    <label for="breed" class="leading-7 text-sm text-gray-600">ドッグフード</label>
+                                   　<select name="dog_food_id">
+                                        <option value="{{ $dog_food_id }}" @if($dog_food_id) selected @endif>{{ $dog_food_id }}</option>
+                                     </select> 　　
                                   </div>
                                 </div>
+                                
+                                
+                                
                                 
                                 <div class="p-2 w-full">
                                   <div class="relative">
@@ -91,12 +107,10 @@
                           </div>
                           </form>
                         </section>
-                        
-                                        
-                </div>
-            </div>
-        </div>
-    </div>
-</x-app-layout>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </x-app-layout>
 
 

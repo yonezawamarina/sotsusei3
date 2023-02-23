@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Dog;
-use App\Models\Dogfood;
+use App\Models\DogFood;
 use App\Models\DogBreed;
 
 
@@ -36,6 +36,9 @@ class DogController extends Controller
 
     public function daykcl(Request $request)
     {
+        
+        
+        
         $data = [
             'name'=>$request->name,
             'breed'=>$request->breed,
@@ -44,10 +47,13 @@ class DogController extends Controller
             'fix'=>$request->fix,
             'age'=>$request->age,
             'food'=>$request->food,
-            'daykcl'=>round(pow(pow(pow($request->weight,3),0.5),0.5)*70)
-            
+            'daykcl'=>round(pow(pow(pow($request->weight,3),0.5),0.5)*70),
+            'dog_breed_id'=>$request->dog_breed_id,
+            'dog_food_id'=>$request->dog_food_id
             
         ];
+        // dd($data);
+        
     
         return view('dogs/daykcl', $data);
     }
@@ -72,15 +78,19 @@ class DogController extends Controller
      */
     public function create()
     {
-      $dogs = Dog::get();
-    //   dd($dogs);
-    //   return view('dogs.create',compact('dogs')); //
-       return view('dogs.create',['dogs'=>$dogs]);
+       
+       $dog_breeds = DogBreed::get();
+    //   dd($dog_breeds);
     
+    //   return view('dogs.create',['dogs_breeds'=>$dogs_breeds]);
+       
+       
+       
+        $dogfoods = DogFood::get();
+        // dd($dogfoods);
     
-    // $dogs = DogBreed::find(1)->dogs;
-    // $dogbreed = Dog::find(1)->dogbreeds;
-    // dd($dogs,$dogbreed);
+        return view('dogs.create',['dog_breeds'=>$dog_breeds,'dogfoods'=>$dogfoods]);
+    
     }
 
     /**
@@ -93,16 +103,19 @@ class DogController extends Controller
     {
       
         	  $dogs = new Dog;
-        // 	  dd($request);
+        // 	  dd($dogs);
         	  $dogs->name   = $request->name;
-        	  $dogs->breed = $request->breed;
+        // 	  $dogs->breed = $request->breed;
         	  $dogs->weight = $request->weight;
         	  $dogs->gender   = $request->gender;
         	  $dogs->fix   = $request->fix;
         	  $dogs->age   = $request->age;
-        	  $dogs->food   = $request->food;
+        // 	  $dogs->food   = $request->food;
         	  $dogs->daykcl   = $request->daykcl;
 	          $dogs->user_id = Auth::id();//ここを追加
+	          $dogs->dog_breed_id = $request->dog_breed_id; // これが足りない
+	          $dogs->dog_food_id = $request->dog_food_id; // これが足りない
+	          
 	          $dogs->save(); 
 	          
 	          return redirect('/');

@@ -13,15 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('dogfoods', function (Blueprint $table) {
+        Schema::create('dog_food', function (Blueprint $table) {
             $table->id();
-           
-            $table->timestamps(); $table->string('dogfoodname', 20); // なまえ
+            $table->string('dogfoodname', 20); // なまえ
             $table->bigInteger('kcal');//カロリー
             $table->tinyInteger('tanpakushitsu'); // タンパク質
             $table->tinyInteger('tansuikabutsu');//炭水化物
             $table->tinyInteger('vitamin'); // ビタミン
             $table->tinyInteger('shishitsu'); // 脂質
+            $table->timestamps();
         });
     }
 
@@ -32,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('dogfoods');
+        Schema::dropIfExists('dog_food');
     }
 };

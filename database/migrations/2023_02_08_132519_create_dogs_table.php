@@ -17,15 +17,13 @@ return new class extends Migration
             $table->id();
             $table->bigInteger('user_id'); //Add:user_id
             $table->string('name', 20); // なまえ
-            $table->string('breed', 20); // 犬種
             $table->boolean('gender'); // 性別
             $table->tinyInteger('age'); // 年齢
             $table->tinyInteger('weight'); // 体重
-            $table->boolean('fix'); // ライフ
-            $table->string('food', 20); // 市販フード
+            $table->boolean('fix'); // ライフステージ
             $table->bigInteger('daykcl'); // 必要カロリー
-            $table->foreignId('dog_breeds_id');
-            $table->foreignId('dogfoods_id');
+            $table->foreignId('dog_breed_id');
+            $table->foreignId('dog_food_id');
             $table->timestamps();
         });
     }
