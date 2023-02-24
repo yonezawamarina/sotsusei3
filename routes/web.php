@@ -52,13 +52,10 @@ Route::prefix('dogs')
  
  
  
- 
- 
- 
 
  
- Route::get('dogfoods/{dogfood}',[DogfoodController::class,'show'])->name('dogfoods.show');
- 
+ Route::get('/dogfoods',[DogFoodController::class,'show'])->name('dogfoods.show');
+//  Route::get('chart/{chart}',[ChartController::class,'show'])->name('chart.show');
 
 
 

@@ -16,14 +16,15 @@ return new class extends Migration
         Schema::create('dogs', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('user_id'); //Add:user_id
+            $table->foreignId('dog_breed_id');
+            $table->foreignId('life_stage_id');
+            // $table->foreignId('dog_food_id');
             $table->string('name', 20); // なまえ
+            $table->tinyInteger('weight'); // 体重
             $table->boolean('gender'); // 性別
             $table->tinyInteger('age'); // 年齢
-            $table->tinyInteger('weight'); // 体重
-            $table->boolean('fix'); // ライフステージ
-            $table->bigInteger('daykcl'); // 必要カロリー
-            $table->foreignId('dog_breed_id');
-            $table->foreignId('dog_food_id');
+            // $table->boolean('fix'); // ライフステージ//ゆくゆく消す
+            // $table->bigInteger('daycalorie'); // 必要カロリー//ゆくゆく消す
             $table->timestamps();
         });
     }

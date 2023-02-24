@@ -15,12 +15,13 @@ return new class extends Migration
     {
         Schema::create('dog_food', function (Blueprint $table) {
             $table->id();
-            $table->string('dogfoodname', 20); // なまえ
-            $table->bigInteger('kcal');//カロリー
-            $table->tinyInteger('tanpakushitsu'); // タンパク質
-            $table->tinyInteger('tansuikabutsu');//炭水化物
+            $table->string('name', 20); // なまえ
+            $table->string('image');//画像
+            $table->bigInteger('kilocalorie');//カロリー
+            $table->tinyInteger('protein'); // タンパク質
+            $table->tinyInteger('carbohydrate');//炭水化物
             $table->tinyInteger('vitamin'); // ビタミン
-            $table->tinyInteger('shishitsu'); // 脂質
+            $table->tinyInteger('fat'); // 脂質
             $table->timestamps();
         });
     }

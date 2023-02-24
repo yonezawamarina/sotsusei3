@@ -30,8 +30,8 @@
                                                   <img alt="content" class="object-cover object-center h-full w-full" src="https://dummyimage.com/1203x503">
                                                 </div>
                                                 <h2 class="text-xl font-medium title-font text-gray-900 mt-5">{{$dog->name}}</h2><!--名前-->
-                                                <a class='text-blue-500' href="{{route('dogs.show',['id'=>$dog->id])}}">詳細</a>
-                                              
+                                                <a class='text-blue-500' href="{{route('dogs.show',['id'=>$dog->id])}}">詳細</a></br>
+                                                <a class='text-blue-500' href="{{route('dogs.show',['id'=>$dog->id])}}">グラフ</a>
                                               </div>
                                               @endforeach
                                             </div>

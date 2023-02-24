@@ -18,21 +18,17 @@ class Dog extends Model
         'fix',
         'age',
         'food',
-        'daykcl'
+        'daycalorie'
          
         
       ];
       
       
       
-       
-    //dogfoodテーブルとのリレーション（従側）
-    public function getdogfood(){
-        return $this->belongsTo('App\Models\Dogfood');
-    }
+
     
     //dogbreedテーブルとのリレーション（従側）
-    public function breed(){
+    public function breedget(){
         return $this->belongsTo('App\Models\DogBreed');
     }
       

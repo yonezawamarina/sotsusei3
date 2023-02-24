@@ -9,7 +9,16 @@ class DogFood extends Model
 {
     use HasFactory;
     
-     public function getdog(){
-        return $this->hasMany('App/Models/Dog');
-    }
+    protected $fillable = [
+        'name',
+        'calorie',
+        'protein',
+        'carbohydrate',
+        'vitamin',
+        'fat'
+        
+      ];
+    
+    
+    
 }

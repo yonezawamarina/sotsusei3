@@ -13,8 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('books', function (Blueprint $table) {
+        Schema::create('life_stages', function (Blueprint $table) {
             $table->id();
+            $table->string('name', 20);
+            $table->tinyInteger('coefficient'); // 係数
             $table->timestamps();
         });
     }
@@ -26,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('books');
+        Schema::dropIfExists('life_stages');
     }
 };

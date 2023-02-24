@@ -57,13 +57,13 @@
                                 <div class="p-2 w-full">
                                   <div class="relative">
                                      <label for="fix" class="leading-7 text-sm text-gray-600">ライフステージ</label></br>
-                                     <input type="radio"  name="fix" value="0" @if($fix == 0) checked @endif>生後4か月までの幼犬</br>
-                                     <input type="radio"  name="fix" value="1" @if($fix == 1) checked @endif>生後4か月から1年までの幼犬</br>
-                                     <input type="radio"  name="fix" value="2" @if($fix == 2) checked @endif>避妊・去勢済みの成犬</br>
-                                     <input type="radio"  name="fix" value="3" @if($fix == 3) checked @endif>避妊・去勢なしの成犬</br>
-                                     <input type="radio"  name="fix" value="4" @if($fix == 4) checked @endif>7歳以上で避妊・去勢済みの中高齢犬</br>
-                                     <input type="radio"  name="fix" value="5" @if($fix == 5) checked @endif>7歳以上で避妊・去勢なしの中高齢犬</br>
-                                     <input type="radio"  name="fix" value="6" @if($fix == 6) checked @endif>肥満傾向の成犬
+                                     <input type="radio"  name="life_stage_id" value="1" @if($life_stage_id == 1) checked @endif>生後4か月までの幼犬</br>
+                                     <input type="radio"  name="life_stage_id" value="2" @if($life_stage_id == 2) checked @endif>生後4か月から1年までの幼犬</br>
+                                     <input type="radio"  name="life_stage_id" value="3" @if($life_stage_id == 3) checked @endif>避妊・去勢済みの成犬</br>
+                                     <input type="radio"  name="life_stage_id" value="4" @if($life_stage_id == 4) checked @endif>避妊・去勢なしの成犬</br>
+                                     <input type="radio"  name="life_stage_id" value="5" @if($life_stage_id == 5) checked @endif>7歳以上で避妊・去勢済みの中高齢犬</br>
+                                     <input type="radio"  name="life_stage_id" value="6" @if($life_stage_id == 6) checked @endif>7歳以上で避妊・去勢なしの中高齢犬</br>
+                                     <input type="radio"  name="life_stage_id" value="7" @if($life_stage_id == 7) checked @endif>肥満傾向の成犬
                                   </div>
                                 </div>
                                 
@@ -74,32 +74,11 @@
                                     <input type="text" id="age" value={{$age}} name="age" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                                   </div>
                                 </div>
+                              
                                 
-                             
-                                
-                                
-                                 <div class="p-2 w-full">
-                                  <div class="relative">
-                                    <label for="breed" class="leading-7 text-sm text-gray-600">ドッグフード</label>
-                                   　<select name="dog_food_id">
-                                        <option value="{{ $dog_food_id }}" @if($dog_food_id) selected @endif>{{ $dog_food_id }}</option>
-                                     </select> 　　
-                                  </div>
-                                </div>
-                                
-                                
-                                
-                                
+                
                                 <div class="p-2 w-full">
-                                  <div class="relative">
-                                    <label for="daykcl" class="leading-7 text-sm text-gray-600">必要カロリー</label>
-                                    <input type="text" id="daykcl" value={{$daykcl}} name="daykcl" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
-                                  </div>
-                                </div>
-                           
-                            
-                                <div class="p-2 w-full">
-                                  <button class="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">Button</button>
+                                  <button class="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">送信</button>
                                 </div>
                 
                               </div>

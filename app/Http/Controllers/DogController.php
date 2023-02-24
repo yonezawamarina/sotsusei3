@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Dog;
 use App\Models\DogFood;
 use App\Models\DogBreed;
+use App\Models\LifeStage;
 
 
 use Validator;  //この1行だけ追加！
@@ -41,15 +42,16 @@ class DogController extends Controller
         
         $data = [
             'name'=>$request->name,
-            'breed'=>$request->breed,
+            // 'breed'=>$request->breed,
             'weight'=>$request->weight,
             'gender'=>$request->gender,
-            'fix'=>$request->fix,
+            // 'fix'=>$request->fix,
             'age'=>$request->age,
-            'food'=>$request->food,
-            'daykcl'=>round(pow(pow(pow($request->weight,3),0.5),0.5)*70),
+            // 'food'=>$request->food,
+            // 'daycalorie'=>round(pow(pow(pow($request->weight,3),0.5),0.5)*70),
             'dog_breed_id'=>$request->dog_breed_id,
-            'dog_food_id'=>$request->dog_food_id
+            'life_stage_id'=>$request->life_stage_id,
+            // 'dog_food_id'=>$request->dog_food_id
             
         ];
         // dd($data);
@@ -79,6 +81,25 @@ class DogController extends Controller
     public function create()
     {
        
+    //   $dog_breeds = DogBreed::get();
+    // //   dd($dog_breeds);
+    
+    // //   return view('dogs.create',['dogs_breeds'=>$dogs_breeds]);
+       
+       
+       
+    // 　$lifestages = LifeStage::get();
+    //     // dd($life_stages);
+    
+    //     return view('dogs.create',['dog_breeds'=>$dog_breeds,'life_stages'=>$life_stages]);
+        // return view('dogs.create',['dogs'=>$dogs,'dogfoods'=>$dogfoods]);
+    // 
+    
+    
+    
+    
+    
+       
        $dog_breeds = DogBreed::get();
     //   dd($dog_breeds);
     
@@ -86,11 +107,10 @@ class DogController extends Controller
        
        
        
-        $dogfoods = DogFood::get();
-        // dd($dogfoods);
+        $life_stages = LifeStage::get();
+        // dd($life_stages);
     
-        return view('dogs.create',['dog_breeds'=>$dog_breeds,'dogfoods'=>$dogfoods]);
-    
+        return view('dogs.create',['dog_breeds'=>$dog_breeds,'life_stages'=>$life_stages]);
     }
 
     /**
@@ -105,17 +125,13 @@ class DogController extends Controller
         	  $dogs = new Dog;
         // 	  dd($dogs);
         	  $dogs->name   = $request->name;
-        // 	  $dogs->breed = $request->breed;
         	  $dogs->weight = $request->weight;
         	  $dogs->gender   = $request->gender;
-        	  $dogs->fix   = $request->fix;
         	  $dogs->age   = $request->age;
-        // 	  $dogs->food   = $request->food;
-        	  $dogs->daykcl   = $request->daykcl;
+        // 	  $dogs->daycalorie   = $request->daycalorie;
 	          $dogs->user_id = Auth::id();//ここを追加
-	          $dogs->dog_breed_id = $request->dog_breed_id; // これが足りない
-	          $dogs->dog_food_id = $request->dog_food_id; // これが足りない
-	          
+	          $dogs->dog_breed_id = $request->dog_breed_id;
+	          $dogs->life_stage_id = $request->life_stage_id; 
 	          $dogs->save(); 
 	          
 	          return redirect('/');
@@ -192,7 +208,7 @@ class DogController extends Controller
       	  $dog->fix   = $request->fix;
       	  $dog->age   = $request->age;
       	  $dog->food   = $request->food;
-      	  $dog->daykcl   = $request->daykcl;
+      	  $dog->daycalorie   = $request->daycalorie;
       	 // dd($dog->daykcl);
          
           $dog->user_id = Auth::id();//ここを追加

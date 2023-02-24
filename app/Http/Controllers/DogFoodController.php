@@ -44,9 +44,11 @@ class DogFoodController extends Controller
      * @param  \App\Models\DogFood  $dogFood
      * @return \Illuminate\Http\Response
      */
-    public function show(DogFood $dogFood)
+    public function show()
     {
-          return view('dogfoods/show',['dogfood' => $dogfood]);      
+          $dogfoods = DogFood::get();
+          dd($dogfoods);
+          return view('/dogfoods',['dogfood' => $dogfood]);      
     }
 
     /**
