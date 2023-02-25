@@ -18,7 +18,13 @@ class DogFood extends Model
         'fat'
         
       ];
-    
+      
+      public function getCalorieAttribute()
+        {
+            $calories = $this->protein * 4 + $this->carbohydrate * 4 + $this->fat * 9;
+            return $calories;
+        }
+            
     
     
 }

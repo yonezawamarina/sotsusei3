@@ -16,7 +16,7 @@ class DogBreed extends Model
       ];
       
      //Dogテーブルとのリレーション（主テーブル側） 
-     public function getdogs(){
+     public function dogs(){
         return $this->hasMany('App\Models\Dog');
     }
       

@@ -15,4 +15,13 @@ class LifeStage extends Model
         'coeffficient'
         
       ];
+      
+      //Dogテーブルとのリレーション（主テーブル側） 
+     public function getlifestagedogs(){
+        return $this->hasMany('App\Models\Dog');
+    }
+      
+      
+      
+      
 }

@@ -97,7 +97,7 @@ class DogController extends Controller
     
     
     
-    
+       $dog_foods = DogFood::get();
     
        
        $dog_breeds = DogBreed::get();
@@ -110,7 +110,7 @@ class DogController extends Controller
         $life_stages = LifeStage::get();
         // dd($life_stages);
     
-        return view('dogs.create',['dog_breeds'=>$dog_breeds,'life_stages'=>$life_stages]);
+        return view('dogs.create',['dog_breeds'=>$dog_breeds,'life_stages'=>$life_stages,'dog_foods'=>$dog_foods]);
     }
 
     /**
@@ -144,6 +144,7 @@ class DogController extends Controller
       {
           $dog = Dog::find($id);
           
+          
           if($dog->gender === 0){
               $gender = '男の子';
               
@@ -154,43 +155,30 @@ class DogController extends Controller
           
           
  
-      if($dog->fix === 0){
-            $fix = '生後4か月までの幼犬';
-          }elseif($dog->fix === 1){
-            $fix = '生後4か月から1年までの幼犬';
-          }elseif($dog->fix === 2){
-            $fix = '避妊・去勢済みの成犬';
-          }elseif($dog->fix === 3){
-            $fix = '避妊・去勢なしの成犬';
-          }elseif($dog->fix === 4){
-            $fix = '7歳以上で避妊・去勢済みの中高齢犬';
-          }elseif($dog->fix === 5){    
-            $fix = '7歳以上で避妊・去勢なしの中高齢犬';
-          }elseif($dog->fix === 6){   
-            $fix = '肥満傾向の成犬';
-          }
-          
+      
     
           return view('dogs.show',
-          compact('dog','gender','fix'));
+          compact('dog','gender'));
           
       }
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Dog  $dog
-     * @return \Illuminate\Http\Response
-     * 
-     * 
-     * 
-     */
+          
+    //             }
+    // /**
+    //  * Display the specified resource.
+    //  *
+    //  * @param  \App\Models\Dog  $dog
+    //  * @return \Illuminate\Http\Response
+    //  * 
+    //  * 
+    //  * 
+    //  */
      
         public function edit($id)
       {
         
          $dog = Dog::find($id);
          
-           return view('dogs.edit', compact('dog'));
+          return view('dogs.edit', compact('dog'));
          
      }
 
@@ -202,19 +190,19 @@ class DogController extends Controller
          $dog = Dog::find($id);
          
           $dog->name   = $request->name;
-      	  $dog->breed = $request->breed;
+      	  $dog->dog_breed->name = $request->dog_breed_id;
       	  $dog->weight = $request->weight;
       	  $dog->gender   = $request->gender;
-      	  $dog->fix   = $request->fix;
+      	  $dog->life_stage->id = $request->life_stage_id; 
       	  $dog->age   = $request->age;
-      	  $dog->food   = $request->food;
-      	  $dog->daycalorie   = $request->daycalorie;
+      	 // $dog->food   = $request->food;
+      	 // $dog->daycalorie   = $request->daycalorie;
       	 // dd($dog->daykcl);
          
           $dog->user_id = Auth::id();//ここを追加
           $dog->save(); 
         
-           return to_route('dogs.index');
+          return to_route('dogs.index');
          
      }
 
@@ -230,7 +218,35 @@ class DogController extends Controller
          
      }
 
+  public function chart($id)
+    {
+        
+        
+        $dog = Dog::find($id);
+        $dog_foods = DogFood::get(); 
+        // dd($dog_foods);
+        
+        
 
+      //自分のuser_idが付与されている投稿だけ取得する
+        // $dogs = Dog::where('user_id',Auth::id())->orderBy('created_at', 'asc')->paginate(30);
+        $data = [
+            "dog"=>$dog,
+            "dog_foods"=>$dog_foods
+        ];
+        return view('dogs.chart',$data);
+        
+        
+        
+        // return view('dogs.chart', [
+        // 'dog'=> $dog,
+        // 'data' => $dog->test()
+        // ],);
+        
+        // return view('dogs.chart',['dog_foods'=>$dog_foods]);
+        
+        
+    }
 
 
 

@@ -7,7 +7,7 @@ use App\Models\Chart;
 use App\Models\Dog;
 use Illuminate\Http\Request;
 
-class DogfoodController extends Controller
+class ChartController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,6 +17,7 @@ class DogfoodController extends Controller
     public function index()
     {
         //
+        $dog = Dog::find(1);
     }
 
     /**

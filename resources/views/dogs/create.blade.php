@@ -53,6 +53,14 @@
                                   </div>
                                 </div>
                                 
+                                
+                                
+                                 
+                                @foreach ($dog_foods as $dog_food)
+                                <div>{{ $dog_food->calorie }}</div>
+                                @endforeach
+                              
+                                
                                 <!--<div class="p-2 w-full">-->
                                 <!--  <div class="relative">-->
                                 <!--    <label for="fix" class="leading-7 text-sm text-gray-600">ライフステージ</label></br>-->

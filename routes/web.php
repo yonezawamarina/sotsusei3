@@ -28,13 +28,15 @@ Route::prefix('dogs')
  Route::get('/', 'index')->name('index'); // 犬一覧 画面
  Route::get('/create', 'create')->name('create'); //犬情報入力画面
  Route::post('/daykcl', 'daykcl')->name('daykcl');//カロリー表示画面
+Route::get('/{id}/chart', 'chart')->name('chart'); //グラフ
  Route::post('/', 'store')->name('store'); //DBに保存
  Route::get('/{id}', 'show')->name('show'); //詳細画面
  Route::get('/{id}/edit', 'edit')->name('edit'); //編集画面
  Route::post('/{id}', 'update')->name('update'); //更新
  Route::post('/{id}/destroy', 'destroy')->name('destroy');//削除 
- });
  
+ });
+  
  Route::prefix('dogbreed') 
  ->middleware(['auth']) // 認証
  ->name('dogbreed.')// ルート名

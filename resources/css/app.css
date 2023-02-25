@@ -1,3 +1,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+dt{    
+    @apply text-sm font-bold text-gray-700;    
+}
+
+dd{
+    @apply mb-3 pb-3 border-b pl-3;
+}
