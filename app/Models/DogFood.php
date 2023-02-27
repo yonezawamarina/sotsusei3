@@ -25,6 +25,7 @@ class DogFood extends Model
             return $calories;
         }
             
+        
     
     
 }

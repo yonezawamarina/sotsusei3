@@ -11,10 +11,10 @@
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                     <section class="text-gray-600 body-font relative">
-                        <form method="post" action="daykcl">
-                            @csrf
-                          <div class="container px-5  mx-auto">
-                        
+                        <!--<form method="post" action="daykcl">-->
+                           
+                           <form method="post" action="{{route('dogs.store')}}">
+                        　　 @csrf
                             <div class="lg:w-1/2 md:w-2/3 mx-auto">
                               <div class="flex flex-wrap -m-2">
                                 
@@ -25,6 +25,8 @@
                                   </div>
                                 </div>
                                 
+                  
+                                
                                 <div class="p-2 w-full">
                                   <div class="relative">
                                     <label for="breed" class="leading-7 text-sm text-gray-600">犬種</label>
@@ -33,7 +35,6 @@
                                             <option value="{{ $dog_breed->id }}">{{ $dog_breed->name}}</option>
                                             @endforeach
                                         </select> 　　　
-                                    <!--<input type="text" id="breed" name="breed" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">-->
                                   </div>
                                 </div>
                                 
@@ -45,6 +46,7 @@
                                   </div>
                                 </div>
                                 
+                                
                                 <div class="p-2 w-full">
                                   <div class="relative">
                                     <label  for="gender" class="leading-7 text-sm text-gray-600">性別</label></br>
@@ -53,47 +55,19 @@
                                   </div>
                                 </div>
                                 
-                                
-                                
-                                 
-                                @foreach ($dog_foods as $dog_food)
-                                <div>{{ $dog_food->calorie }}</div>
-                                @endforeach
-                              
-                                
-                                <!--<div class="p-2 w-full">-->
-                                <!--  <div class="relative">-->
-                                <!--    <label for="fix" class="leading-7 text-sm text-gray-600">ライフステージ</label></br>-->
-                                <!--     <input type="radio"  name="fix" value="0" {{ old ('fix') == '0' ? 'checked' : '' }}checked>生後4か月までの幼犬</br>-->
-                                <!--     <input type="radio"  name="fix" value="1" {{ old ('fix') == '1' ? 'checked' : '' }}checked>生後4か月から1年までの幼犬</br>-->
-                                <!--     <input type="radio"  name="fix" value="2" {{ old ('fix') == '2' ? 'checked' : '' }}checked>避妊・去勢済みの成犬</br>-->
-                                <!--     <input type="radio"  name="fix" value="3" {{ old ('fix') == '3' ? 'checked' : '' }}checked>避妊・去勢なしの成犬</br>-->
-                                <!--     <input type="radio"  name="fix" value="4" {{ old ('fix') == '4' ? 'checked' : '' }}checked>7歳以上で避妊・去勢済みの中高齢犬</br>-->
-                                <!--     <input type="radio"  name="fix" value="5" {{ old ('fix') == '5' ? 'checked' : '' }}checked>7歳以上で避妊・去勢なしの中高齢犬</br>-->
-                                <!--     <input type="radio"  name="fix" value="6" {{ old ('fix') == '6' ? 'checked' : '' }}checked>肥満傾向の成犬-->
-                                <!--  </div>-->
-                                <!--</div>-->
-                                
-                                
-                                
-                                
+                  
                                 
                                 <div class="p-2 w-full">
                                   <div class="relative">
                                     <label for="fix" class="leading-7 text-sm text-gray-600">ライフステージ</label></br>
                                     @foreach ($life_stages as $life_stage)
-                                     <input type="radio"  name="life_stage" value="{{ $life_stage->id }}" >{{ $life_stage->name}}</br>
+                                     <input type="radio"  name="life_stage_id" value="{{ $life_stage->id }}" >{{ $life_stage->name}}</br>
                                      @endforeach
                                   </div>
                                 </div>
                                 
-                                
-                                
-                                
-                                
-                                
-                                
-                                
+                      
+                      
                                 <div class="p-2 w-full">
                                   <div class="relative">
                                     <label for="age" class="leading-7 text-sm text-gray-600">年齢</label>
@@ -101,16 +75,7 @@
                                   </div>
                                 </div>
                                 
-                               
-                                
-                                
-                                <!--<div class="p-2 w-full">-->
-                                <!--  <div class="relative">-->
-                                <!--    <label for="daycalorie" class="leading-7 text-sm text-gray-600">必要カロリー</label>-->
-                                   <!--<input type="text" id="foodkcal" name="foodkcal" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">-->
-                                <!--    <div>計算</div>-->
-                                <!--  </div>-->
-                                <!--</div>-->
+  
                            
                             
                                 <div class="p-2 w-full">
@@ -121,14 +86,12 @@
                             </div>
                           </div>
                           </form>
-                        </section>
-                        
-                                        
+                         </section>
+                       </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
-</x-app-layout>
+        </x-app-layout>
 
 
 

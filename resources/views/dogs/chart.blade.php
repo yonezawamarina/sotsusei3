@@ -5,33 +5,69 @@
         </h2>
     </x-slot>
     
-         <div>{{$dog->name}}</div>
          
+        
+        
+         <!--その犬の１日のカロリー摂取量を満たす為の、選択したフードのグラム数を求めたい-->
+         <!--上記の数式　"$dog->calorie"　÷（割る）"選択したドッグフードのカロリdog_food->kilocalorieー"　×１００-->
+         <!---->
     
     
-         <!---必要カロリー表示--->
-          <div class="relative">
-            <label for="breed" class="leading-7 text-sm text-gray-600">必要カロリー</label>
-            
-            @foreach ($dog_foods as $dog_food)
-            　<div>{{ $dog_food->calorie }}</div>
-            @endforeach
-         </div>
+    
          
-         <!---フード選択--->
-         <form action=>
+        <div>{{$dog->name}}</div> 
+        <div>{{$dog->calorie}}</div> 
+         
+              
          <div class="p-2 w-full">
           <div class="relative">
             <label for="breed" class="leading-7 text-sm text-gray-600">ドッグフード選択</label>
-            　<select name="dog_breed_id">
-                    @foreach ($dog_foods as $dog_food)
-                    <option value="{{ $dog_food->id }}">{{ $dog_food->name}}</option>
-                    @endforeach
-                </select> 　　　
-            <!--<input type="text" id="breed" name="breed" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">-->
-          </div>
-         </div>
-        </form>
+            <form method="get"  action="/dogs/{{$dog->id}}/chart">
+                　<select name="dog_food_id" id="dog_food_id">
+                        @foreach ($dog_foods as $dog_food)
+                        <option value="{{ $dog_food->id }}">{{ $dog_food->name}}</option>
+                        @endforeach
+                 </select> 
+                 
+                 <button class=" text-white bg-indigo-500 border-0 py-1 px-4 focus:outline-none hover:bg-indigo-600 rounded text-lg">送信</button>
+             </form>
+           </div>
+           
+       
+        
+        @if(request()->has('dog_food_id'))
+            @php
+                $dogfood = App\Models\DogFood::find(request()->input('dog_food_id'));
+            @endphp
+            @if($dogfood)
+                 <table>
+                    <thead>
+                            <td>フード名</td>
+                            <td>カロリー</td>
+                            <td>たんぱく質</td>
+                            <td>ビタミン</td>
+                            <td>炭水化物</td>
+                            <td>脂質</td>
+                        <tr>
+                            <th>{{ $dogfood->name }}</th>
+                            <th>{{ $dogfood->kilocalorie }}</th>
+                            <th>{{ $dogfood->protein }}</th>
+                            <th>{{ $dogfood->vitamin }}</th>
+                            <th>{{ $dogfood->carbohydrate }}</th>
+                            <th>{{ $dogfood->fat }}</th>
+                        </tr>
+                    </thead>
+                </table>
+            @endif
+        @endif
+                        
+                
+               
+       
+           
+         
+          
+         
     
     
     
@@ -60,45 +96,5 @@
     <!--    </div>-->
     <!--</div>-->
     <!---->
-<script>
-   
-        
-        const ctx = document.getElementById("mychart").getContext("2d");
-        const myChart = new Chart(ctx, {
-            type: "bar",
-            data: {
-                labels: ["タンパク質", "ビタミン", "脂質"],
-                datasets: [
-                    {
-                        label: "# of Votes",
-                        data: @json($data),
-                        backgroundColor: [
-                            "rgba(255, 99, 132, 0.2)",
-                            "rgba(54, 162, 235, 0.2)",
-                            "rgba(255, 206, 86, 0.2)",
-                            "rgba(75, 192, 192, 0.2)",
-                            "rgba(153, 102, 255, 0.2)",
-                            "rgba(255, 159, 64, 0.2)",
-                        ],
-                        borderColor: [
-                            "rgba(255, 99, 132, 1)",
-                            "rgba(54, 162, 235, 1)",
-                            "rgba(255, 206, 86, 1)",
-                            "rgba(75, 192, 192, 1)",
-                            "rgba(153, 102, 255, 1)",
-                            "rgba(255, 159, 64, 1)",
-                        ],
-                        borderWidth: 1,
-                    },
-                ],
-            },
-            options: {
-                scales: {
-                    y: {
-                        beginAtZero: true,
-                    },
-                },
-            },
-        });
-</script>
+
 </x-app-layout>

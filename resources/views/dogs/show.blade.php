@@ -22,7 +22,7 @@
                                   <dd>{{$dog->dog_breed->name}}</dd>
                                   
                                   <dt>体重</dt>
-                                  <dd>{{$dog->weight}}</dd>
+                                  <dd>{{$dog->weight}}kg</dd>
                                   
                                   
                                   <dt>性別</dt>
@@ -32,9 +32,9 @@
                                   <dd>{{$dog->life_stage->name}}</dd>
                                   
                                   <dt>年齢</dt>
-                                  <dd>{{$dog->age}}</dd>
+                                  <dd>{{$dog->age}}歳</dd>
                                   
-                                  <dt>摂取カロリー</dt>
+                                  <dt>1日に必要な摂取カロリー</dt>
                                   <dd>{{$dog->calorie}}</dd>
                                   
                                   

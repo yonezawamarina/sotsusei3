@@ -8,6 +8,7 @@ use App\Models\DogBreed;
 use App\Models\LifeStage;
 
 
+
 use Validator;  //この1行だけ追加！
 use Illuminate\Http\Request;
 
@@ -37,26 +38,16 @@ class DogController extends Controller
 
     public function daykcl(Request $request)
     {
-        
-        
-        
         $data = [
             'name'=>$request->name,
-            // 'breed'=>$request->breed,
             'weight'=>$request->weight,
             'gender'=>$request->gender,
-            // 'fix'=>$request->fix,
             'age'=>$request->age,
-            // 'food'=>$request->food,
-            // 'daycalorie'=>round(pow(pow(pow($request->weight,3),0.5),0.5)*70),
             'dog_breed_id'=>$request->dog_breed_id,
             'life_stage_id'=>$request->life_stage_id,
-            // 'dog_food_id'=>$request->dog_food_id
             
         ];
-        // dd($data);
-        
-    
+      
         return view('dogs/daykcl', $data);
     }
      
@@ -81,36 +72,16 @@ class DogController extends Controller
     public function create()
     {
        
-    //   $dog_breeds = DogBreed::get();
-    // //   dd($dog_breeds);
-    
-    // //   return view('dogs.create',['dogs_breeds'=>$dogs_breeds]);
-       
-       
-       
-    // 　$lifestages = LifeStage::get();
-    //     // dd($life_stages);
-    
-    //     return view('dogs.create',['dog_breeds'=>$dog_breeds,'life_stages'=>$life_stages]);
-        // return view('dogs.create',['dogs'=>$dogs,'dogfoods'=>$dogfoods]);
-    // 
-    
-    
-    
        $dog_foods = DogFood::get();
     
        
        $dog_breeds = DogBreed::get();
-    //   dd($dog_breeds);
-    
-    //   return view('dogs.create',['dogs_breeds'=>$dogs_breeds]);
-       
-       
-       
-        $life_stages = LifeStage::get();
+  
+      
+       $life_stages = LifeStage::get();
         // dd($life_stages);
     
-        return view('dogs.create',['dog_breeds'=>$dog_breeds,'life_stages'=>$life_stages,'dog_foods'=>$dog_foods]);
+       return view('dogs.create',['dog_breeds'=>$dog_breeds,'life_stages'=>$life_stages,'dog_foods'=>$dog_foods]);
     }
 
     /**
@@ -123,17 +94,14 @@ class DogController extends Controller
     {
       
         	  $dogs = new Dog;
-        // 	  dd($dogs);
         	  $dogs->name   = $request->name;
         	  $dogs->weight = $request->weight;
         	  $dogs->gender   = $request->gender;
         	  $dogs->age   = $request->age;
-        // 	  $dogs->daycalorie   = $request->daycalorie;
 	          $dogs->user_id = Auth::id();//ここを追加
 	          $dogs->dog_breed_id = $request->dog_breed_id;
 	          $dogs->life_stage_id = $request->life_stage_id; 
 	          $dogs->save(); 
-	          
 	          return redirect('/');
  
     }
@@ -153,10 +121,6 @@ class DogController extends Controller
             $gender = '女の子';
           }
           
-          
- 
-      
-    
           return view('dogs.show',
           compact('dog','gender'));
           
@@ -194,11 +158,6 @@ class DogController extends Controller
       	  $dog->weight = $request->weight;
       	  $dog->gender   = $request->gender;
       	  $dog->life_stage->id = $request->life_stage_id; 
-      	  $dog->age   = $request->age;
-      	 // $dog->food   = $request->food;
-      	 // $dog->daycalorie   = $request->daycalorie;
-      	 // dd($dog->daykcl);
-         
           $dog->user_id = Auth::id();//ここを追加
           $dog->save(); 
         
@@ -218,23 +177,62 @@ class DogController extends Controller
          
      }
 
-  public function chart($id)
+  public function chart($id,Request $request)
     {
         
-        
+        //idから犬を取得
         $dog = Dog::find($id);
-        $dog_foods = DogFood::get(); 
-        // dd($dog_foods);
         
+        //選択されたドッグフードを取得
+        $dog_food_id = $request->dog_food_id;
+        // dd($dog_food_id);
+        if($dog_food_id){
+            $dog_food = DogFood::find($dog_food_id);
+        }else{
+            $dog_food = null;
+        }
+        
+        
+        //ﾄﾞｯｸﾞﾌｰﾄﾞ全件取得(プルダウン用)
+        $dog_foods = DogFood::get();
+        
+        //ビューにデータを渡す
+        $data = [
+            "dog" => $dog,
+            "dog_food" => $dog_food,
+            "dog_foods" => $dog_foods
+            ];
+            
+        return view('dogs.chart',$data);    
+        
+    }
         
 
       //自分のuser_idが付与されている投稿だけ取得する
-        // $dogs = Dog::where('user_id',Auth::id())->orderBy('created_at', 'asc')->paginate(30);
-        $data = [
-            "dog"=>$dog,
-            "dog_foods"=>$dog_foods
-        ];
-        return view('dogs.chart',$data);
+       
+        
+        
+        
+        // return view('dogs.chart', [
+        // 'dog'=> $dog,
+        // 'data' => $dog->test()
+        // ],);
+        
+        // return view('dogs.chart',['dog_foods'=>$dog_foods]);
+        
+        
+    
+        
+        public function chart2($id)
+    {
+        
+        
+        // $dog = Dog::find($id);
+        $dog_foods = DogFood::find($id); 
+        
+        
+
+        return view('dogs.chart',['dog_foods->$dog_foods']);
         
         
         
@@ -247,6 +245,28 @@ class DogController extends Controller
         
         
     }
+    
+   
+       
+        
+        
+
+      //自分のuser_idが付与されている投稿だけ取得する
+        // $dogs = Dog::where('user_id',Auth::id())->orderBy('created_at', 'asc')->paginate(30);
+       
+       
+        
+        
+        
+        // return view('dogs.chart', [
+        // 'dog'=> $dog,
+        // 'data' => $dog->test()
+        // ],);
+        
+        // return view('dogs.chart',['dog_foods'=>$dog_foods]);
+        
+        
+    
 
 
 
