@@ -23,15 +23,23 @@
           <div class="relative">
             <label for="breed" class="leading-7 text-sm text-gray-600">ドッグフード選択</label>
             <form method="get"  action="/dogs/{{$dog->id}}/chart">
-                　<select name="dog_food_id" id="dog_food_id">
+                
+               
+                
+                <select name="dog_food_id" id="dog_food_id">
                         @foreach ($dog_foods as $dog_food)
-                        <option value="{{ $dog_food->id }}">{{ $dog_food->name}}</option>
+                        
+                        
+                         <option value="{{ $dog_food->id }}"{{$dog_food->id == $dog_food_id ? 'selected' : ''}}>{{ $dog_food->name }}</option>
+                        
+                         
                         @endforeach
-                 </select> 
-                 
+                  </select> 
+                                 
                  <button class=" text-white bg-indigo-500 border-0 py-1 px-4 focus:outline-none hover:bg-indigo-600 rounded text-lg">送信</button>
              </form>
            </div>
+           
            
        
         

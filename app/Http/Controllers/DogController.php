@@ -200,7 +200,8 @@ class DogController extends Controller
         $data = [
             "dog" => $dog,
             "dog_food" => $dog_food,
-            "dog_foods" => $dog_foods
+            "dog_foods" => $dog_foods,
+            'dog_food_id' => $request->input('dog_food_id')
             ];
             
         return view('dogs.chart',$data);    
