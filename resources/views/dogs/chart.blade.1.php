@@ -30,56 +30,59 @@
                         @endforeach
                   </select> 
                   
-                   <input type="number" name="added_foods" id="added_foods" value="0" />       <!--追加-->
+                  <input type="number" name="amount" id="amount">         <!--追加-->
     
                   
                  <button class=" text-white bg-indigo-500 border-0 py-1 px-4 focus:outline-none hover:bg-indigo-600 rounded text-lg">送信</button>
              </form>
            </div>
            
-            <div>
-                <p>摂取フード量: {{ $added_foods }} g</p>
-            </div>
-           　
-           <div>選択したフードの栄養素(100ｇあたり)</div>
-           <table>
-                    <thead>
-                            <td>たんぱく質</td>
-                            <td>ビタミン</td>
-                            <td>炭水化物</td>
-                            <td>脂質</td>
-                        <tr>
-                            
-                            <th>{{ $dog_food_protein }}</th>
-                            <th>{{ $dog_food_vitamin }}</th>
-                            <th>{{ $dog_food_carbohydrate}}</th>
-                            <th>{{ $dog_food_fat }}</th>
-                           
-                        </tr>
-                    </thead>
-                </table>
-                   
            
-            
-            <div>摂取できる栄養素量</div>
-           <table>
+       
+       
+        @if(request()->has('dog_food_id'))
+            @php
+                $dogfood = App\Models\DogFood::find(request()->input('dog_food_id'));
+            @endphp
+            @if($dogfood)
+                 <table>
                     <thead>
+                            <td>フード名</td>
+                            <td>カロリー</td>
                             <td>たんぱく質</td>
                             <td>ビタミン</td>
                             <td>炭水化物</td>
                             <td>脂質</td>
                         <tr>
-                            <th>{{ $protein_amount }}</th>
-                            <th>{{ $vitamin_amount }}</th>
-                            <th>{{ $carbohydrate_amount}}</th>
-                            <th>{{ $fat_amount }}</th>
+                            <th>{{ $dogfood->name }}</th>
+                            <th>{{ $dogfood->kilocalorie }}</th>
+                            <th>{{ $dogfood->protein }}</th>
+                            <th>{{ $dogfood->vitamin }}</th>
+                            <th>{{ $dogfood->carbohydrate }}</th>
+                            <th>{{ ($dogfood->fat)*5 }}</th>
                         </tr>
                     </thead>
                 </table>
-                   
-            
-             
+            @endif
+        @endif
         
+        
+       
+       
+        <form method="post" action="/dogs/{{$dog->id}}/chart">
+            @csrf
+            <label for="num1">摂取量:</label> <!--aグラムとする-->
+            <input type="number" name="amount" id="amount">
+            
+            <button class=" text-white bg-indigo-500 border-0 py-1 px-4 focus:outline-none hover:bg-indigo-600 rounded text-lg">計算</button>
+        </form>
+                
+            @if (isset($result))
+                <p>摂れるたんぱく質は{{$result}}グラムです。</p>
+            @endif
+                
+        <!--摂取できるたんぱく質　bグラムとする-->
+        <!--bグラム ＝ aグラム÷100グラム × 45グラム-->
         
         
     

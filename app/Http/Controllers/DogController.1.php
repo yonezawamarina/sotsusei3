@@ -185,24 +185,6 @@ class DogController extends Controller
         
         //選択されたドッグフードを取得
         $dog_food_id = $request->dog_food_id;
-        
-        //追加
-        // $dog_food_name = DogFood::findOrFail($dog_food_name)->name;
-        $dog_food_protein = DogFood::findOrFail($dog_food_id)->protein;
-        $dog_food_vitamin = DogFood::findOrFail($dog_food_id)->vitamin;
-        $dog_food_fat = DogFood::findOrFail($dog_food_id)->fat;
-        // $dog_food_carbonhydrate = DogFood::findOrFail($dog_food_id)->carbonhydrate;
-        $dog_food_carbohydrate = DogFood::findOrFail($dog_food_id)->carbohydrate;
-        $added_foods = $request->input('added_foods') ?? 0;
-        
-        
-        $protein_amount = $dog_food_protein * ($added_foods/100);
-        $vitamin_amount = $dog_food_vitamin * ($added_foods/100);
-        $carbohydrate_amount = $dog_food_carbohydrate * ($added_foods/100);
-        $fat_amount = $dog_food_fat * ($added_foods/100);
-        
-        
-        
         // dd($dog_food_id);
         if($dog_food_id){
             $dog_food = DogFood::find($dog_food_id);
@@ -214,31 +196,16 @@ class DogController extends Controller
         //ﾄﾞｯｸﾞﾌｰﾄﾞ全件取得(プルダウン用)
         $dog_foods = DogFood::get();
         
-        // $amount = $request->input('amount');
-        // $result = ($amount/100)*3;
+        $amount = $request->input('amount');
+        $result = ($amount/100)*3;
         
         //ビューにデータを渡す
         $data = [
-            
             "dog" => $dog,
             "dog_food" => $dog_food,
             "dog_foods" => $dog_foods,
-            'dog_food_protein' => $dog_food_protein,
-            // 'dog_food_name' => $dog_food_name,
-            'dog_food_vitamin' => $dog_food_vitamin,
-            'dog_food_fat' => $dog_food_fat,
-            // 'dog_food_kilocalorie' => $dog_food_kilocalorie,
-            'dog_food_carbohydrate' => $dog_food_carbohydrate,
-            'added_foods' => $added_foods,
             'dog_food_id' => $request->input('dog_food_id'),
-            'protein_amount' => $protein_amount,
-            'vitamin_amount' => $vitamin_amount,
-            'fat_amount' => $fat_amount,
-            'carbohydrate_amount' => $carbohydrate_amount,
-            'protein_amount' => $protein_amount,
-            'vitamin_amount' => $vitamin_amount
-            // "result" => $result
-            
+            "result" => $result
             ];
             
         return view('dogs.chart',$data);    
