@@ -71,21 +71,27 @@ class Dog extends Model
     {
         return ($this->calorie)/1000*45;
     }
+       
+       
             
-    
-    
-    
-    
-    
-    
-    
-    
-     public function test(){
-        return [1,2,3];
+     public function getRequiredGraphData()
+    {
+        $requireddata = [
+            $this->RequiredProtein,
+            $this->RequiredVitamin,
+            $this->RequiredCarbohydrate,
+            $this->RequiredFat,
+        ];
+        
+        return $requireddata;
     }
-      
-      
-      
-      
+    
+    
+    
+    
+    
+    
+    
+    
       
 }

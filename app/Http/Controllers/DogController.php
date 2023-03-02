@@ -29,12 +29,7 @@ class DogController extends Controller
     
      */
      
-    //   public function inputform()
-    // {
-    //     // $data = ['msg'=>"テキストボックスに入力してください。"];
-    //     // dd($data);
-    //     return view('dogs.dog');
-    // }
+ 
 
     public function daykcl(Request $request)
     {
@@ -177,8 +172,8 @@ class DogController extends Controller
          
      }
 
-  public function chart($id,Request $request)
-    {
+     public function chart($id,Request $request)
+     {
         
         
         //idから犬を取得
@@ -217,15 +212,6 @@ class DogController extends Controller
         
 
      
-        
-    
-        
-       
-    
-   
-       
-        
-        
 
       //自分のuser_idが付与されている投稿だけ取得する
         // $dogs = Dog::where('user_id',Auth::id())->orderBy('created_at', 'asc')->paginate(30);
@@ -233,18 +219,5 @@ class DogController extends Controller
        
         
         
-        
-        // return view('dogs.chart', [
-        // 'dog'=> $dog,
-        // 'data' => $dog->test()
-        // ],);
-        
-        // return view('dogs.chart',['dog_foods'=>$dog_foods]);
-        
-        
-    
-
-
-
 
 }

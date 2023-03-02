@@ -115,7 +115,7 @@
                             
                             {
                                 label: "# of Votes",
-                                data: [0.1,0.2,0.3,0.4],
+                                data: @json($dog->getRequiredGraphData()),
                                 backgroundColor: [
                                     "rgba(255, 99, 132, 0.2)",
                                     "rgba(54, 162, 235, 0.2)",
