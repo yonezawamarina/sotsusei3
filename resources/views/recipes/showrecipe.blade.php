@@ -1,0 +1,2 @@
+{{$recipes->name}}
+{{$recipes->process}}

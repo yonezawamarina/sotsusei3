@@ -41,10 +41,7 @@ Route::prefix('dogs')
  });
  
  
-  //追加した
- Route::get('/dog_foods/{id}/kilocalorie', [DogFoodController::class, 'getKilocalorie']);
- 
- 
+
  
  Route::prefix('recipes') 
  ->middleware(['auth']) // 認証
@@ -52,8 +49,8 @@ Route::prefix('dogs')
  ->controller(CategoryController::class) // コントローラ指定
  ->group(function(){ // グループ化
  Route::get('/', 'index')->name('index');//カテゴリー一覧
- Route::get('/{id}', 'show')->name('show');//カテゴリーの中身
- 
+ Route::get('/{id}', 'show')->name('show');//レシピ一覧
+//  Route::get('/{id}', 'showrecipe')->name('showrecipe');//レシピ詳細
 
  });
  

@@ -55,19 +55,12 @@ class CategoryController extends Controller
         
         $recipes = $category->recipes;
         
-        // $category = Category::get();
-        
         $data = [
             'category' => $category,
             'recipes' => $recipes,
-            
         ];
         
         return view('recipes.show', $data);
-        
-        
-        
-        
     }
 
     /**
@@ -76,9 +69,16 @@ class CategoryController extends Controller
      * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function edit(Category $category)
+    public function showrecipe($id)
     {
-        //
+        $recipes= Recipe::find($id);
+        
+        $data = [
+             'recipes' => $recipes,
+        
+        ];
+        
+        return view('recipes.showrecipe',$data);
     }
 
     /**
