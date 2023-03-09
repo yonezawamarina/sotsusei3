@@ -16,19 +16,25 @@ class DogfoodSeeder extends Seeder
      */
     public function run()
     {
-         DB::table('dogfoods')->insert([
+         DB::table('dog_food')->insert([
            [
-                 'dogfoodname' => 'フード1',
-                 'tanpakushitsu' => '10',
+                 'image' => 'flower.jpg',
+                 'name' => 'フード1',
+                 'kilocalorie' => '20',
+                 'protein' => '10',
+                 'carbohydrate' =>'20',
                  'vitamin' => '20',
-                 'shishitsu' => '30'
+                 'fat' => '30'
                  
            ],  
            [
-                  'dogfoodname' => 'フード2',
-                  'tanpakushitsu' => '1',
-                  'vitamin' => '2',
-                  'shishitsu' => '3'
+                 'image' => 'flower.jpg',
+                 'name' => 'フード2',
+                 'kilocalorie' => '30',
+                 'protein' => '40',
+                 'carbohydrate' =>'50',
+                 'vitamin' => '60',
+                 'fat' => '10'
            ]
              
         ]);
