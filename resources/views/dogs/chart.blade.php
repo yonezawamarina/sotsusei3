@@ -17,18 +17,20 @@
             <label for="breed" class="leading-7 text-sm text-gray-600">ドッグフード選択</label>
             <form method="get"  action="/dogs/{{$dog->id}}/chart">
                 
-                <select name="dog_food_id" id="dog_food_id">
+                <select name="dog_food_id" id="dog_food_id" onchange="setInitialIntake({{$dog->calorie}}/this.value)">
                         @foreach ($dog_foods as $df)
                          <option value="{{ $df->id }}"{{ $dog_food && $df->id == $dog_food->id ? ' selected' : '' }}>{{ $df->name}}</option>
                         @endforeach
                   </select> 
                   
-                   <input type="number" name="intake"  value="{{$intake}}" />       <!--追加-->
+                   <input id="inputIntake" type="number" name="intake"  value="{{$intake}}" />       <!--追加-->
     
                   
                  <button class=" text-white bg-indigo-500 border-0 py-1 px-4 focus:outline-none hover:bg-indigo-600 rounded text-lg">送信</button>
              </form>
            </div>
+           
+           <img src="/storage/images/{{$dog_food->image}}">
            
             <div>
                 <p>摂取フード量: {{ $intake }} g</p>
@@ -84,7 +86,16 @@
                    
             <script>
 
-
+               function setInitialIntake(value){
+                   document.querySelector("#inputIntake").value = parseInt(value);
+               }
+               
+               
+               
+               
+               
+               
+               
                 const ctx = document.getElementById("mychart").getContext("2d");
                 const myChart = new Chart(ctx, {
                     type: "radar",

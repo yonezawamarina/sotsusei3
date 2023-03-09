@@ -7,8 +7,8 @@
 
 <p>effefe</p>
 
-@foreach ($categories->)
-    <a>{{$categories->name}}</a></br>
+@foreach ($recipes as $recipe)
+    <a>{{$recipe->name}}</a></br>
 @endforeach
 
 

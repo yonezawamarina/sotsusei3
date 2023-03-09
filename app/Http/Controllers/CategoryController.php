@@ -51,18 +51,19 @@ class CategoryController extends Controller
      */
     public function show($id)
     {
-        $categories= Category::find($id);
-        // $recipes = $category->recipes;
+        $category= Category::find($id);
+        
+        $recipes = $category->recipes;
         
         // $category = Category::get();
         
-        // $data = [
-        //     'category' => $category,
-        //     'recipes' => $recipes,
+        $data = [
+            'category' => $category,
+            'recipes' => $recipes,
             
-        // ];
+        ];
         
-        return view('recipes.show', ['categories' => $categories]);
+        return view('recipes.show', $data);
         
         
         
