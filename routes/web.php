@@ -7,6 +7,9 @@ use App\Models\Dog;
 use App\Models\DogBreed;
 use Illuminate\Http\Request;
 use App\Http\Controllers\DogfoodController;
+use App\Http\Controllers\RecipeController;
+use App\Http\Controllers\CategoryController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -35,17 +38,36 @@ Route::prefix('dogs')
  Route::post('/{id}/chart', 'chart')->name('chart'); //グラフ
  Route::get('/{id}/chart', 'chart')->name('chart'); //グラフ
  
+ });
+ 
+ 
+  //追加した
+ Route::get('/dog_foods/{id}/kilocalorie', [DogFoodController::class, 'getKilocalorie']);
+ 
+ 
+ 
+ Route::prefix('recipes') 
+ ->middleware(['auth']) // 認証
+ ->name('recipes.')// ルート名
+ ->controller(CategoryController::class) // コントローラ指定
+ ->group(function(){ // グループ化
+ Route::get('/', 'index')->name('index');//カテゴリー一覧
+ Route::get('/{id}', 'show')->name('show');//カテゴリーの中身
+ 
 
  });
-  
+ 
+ 
+ 
+ 
+ 
+//  Route::get('recipes.show',[CategoryController::class,'show'])->name('recipes.show');
  
  
  
 
  
- Route::get('/dogfoods',[DogFoodController::class,'show'])->name('dogfoods.show');
-//  Route::get('chart/{chart}',[ChartController::class,'show'])->name('chart.show');
-
+//  Route::get('/dogfoods',[DogFoodController::class,'show'])->name('dogfoods.show');
 
 
 Route::get('/', function () {

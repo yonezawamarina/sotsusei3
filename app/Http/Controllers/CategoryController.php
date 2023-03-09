@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\DogFood;
+use App\Models\Category;
+use App\Models\Recipe;
 use Illuminate\Http\Request;
 
-class DogFoodController extends Controller
+class CategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +15,11 @@ class DogFoodController extends Controller
      */
     public function index()
     {
-        //
+        
+        $categories = Category::all();
+     
+    
+         return view('recipes.index', ['categories' => $categories]);
     }
 
     /**
@@ -41,23 +46,36 @@ class DogFoodController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\DogFood  $dogFood
+     * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function show()
+    public function show($id)
     {
-          $dogfoods = DogFood::get();
-          dd($dogfoods);
-          return view('/dogfoods',['dogfood' => $dogfood]);      
+        $categories= Category::find($id);
+        // $recipes = $category->recipes;
+        
+        // $category = Category::get();
+        
+        // $data = [
+        //     'category' => $category,
+        //     'recipes' => $recipes,
+            
+        // ];
+        
+        return view('recipes.show', ['categories' => $categories]);
+        
+        
+        
+        
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\DogFood  $dogFood
+     * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function edit(DogFood $dogFood)
+    public function edit(Category $category)
     {
         //
     }
@@ -66,10 +84,10 @@ class DogFoodController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\DogFood  $dogFood
+     * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, DogFood $dogFood)
+    public function update(Request $request, Category $category)
     {
         //
     }
@@ -77,31 +95,11 @@ class DogFoodController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\DogFood  $dogFood
+     * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function destroy(DogFood $dogFood)
+    public function destroy(Category $category)
     {
         //
     }
-    
-    
-    
-     //追加した
-    
-    
-    
-    
-   
-  public function getKilocalorie($id)
-  {
-    $dogFood = DogFood::findOrFail($id);
-    return response()->json([
-      'kilocalorie' => $dogFood->kilocalorie
-    ]);
-  }
 }
-    
-    
-      
-

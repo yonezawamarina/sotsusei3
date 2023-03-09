@@ -11,24 +11,51 @@
         <div>{{$dog->name}}</div> 
         <div>{{$dog->calorie}}</div> 
          
+         
+         
+       
+
               
          <div class="p-2 w-full">
           <div class="relative">
             <label for="breed" class="leading-7 text-sm text-gray-600">ドッグフード選択</label>
             <form method="get"  action="/dogs/{{$dog->id}}/chart">
                 
-                <select name="dog_food_id" id="dog_food_id">
+                  
+               {{--  <select name="dog_food_id" id="dog_food_id">
                         @foreach ($dog_foods as $df)
                          <option value="{{ $df->id }}"{{ $dog_food && $df->id == $dog_food->id ? ' selected' : '' }}>{{ $df->name}}</option>
                         @endforeach
-                  </select> 
-                  
-                   <input type="number" name="intake"  value="{{$intake}}" />       <!--追加-->
-    
-                  
+                </select> 
+                  　　<p　id="calorie">Aaa</p>
+                     <input type="number" name="intake"  id="intake" value="{{$intake}}" />--}}
+                     
+                    
+                    
+                    <select name="dog_food" id="dog_food">
+                      @foreach ($dog_foods as $dogFood)
+                        <option value="{{ $dogFood->id }}">{{ $dogFood->name }}</option>
+                      @endforeach
+                    </select>
+                    <!--<input type="text" id="dog_food_kcal" name="kilocalorie" value="">-->
+
+                    
+                                        
+                                     
+                                     
+                 
+                     
+                     
+                
                  <button class=" text-white bg-indigo-500 border-0 py-1 px-4 focus:outline-none hover:bg-indigo-600 rounded text-lg">送信</button>
              </form>
            </div>
+           
+           
+           
+            
+        
+           
            
             <div>
                 <p>摂取フード量: {{ $intake }} g</p>
@@ -81,10 +108,45 @@
                             </div>
                         </div>
                     </div>
-                   
+                  
+             
+                  
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>       
             <script>
+　　　　　　
+　　　
+                    
+                     $(document).ready(function() {
+                        $('#dog_food').on('change', function() {
+                          var dogFoodId = $(this).val();
+                          $.ajax({
+                            url: '/dog_foods/' + dogFoodId + '/kilocalorie',
+                            type: 'GET',
+                            dataType: 'json',
+                            success: function(response) {
+                              $('#kilocalorie').val(response.kilocalorie);
+                            },
+                            error: function(jqXHR, textStatus, errorThrown) {
+                              console.log(textStatus + ': ' + errorThrown);
+                            }
+                          });
+                        });
+                      });
 
 
+
+
+
+
+
+
+           
+
+
+
+
+
+              
                 const ctx = document.getElementById("mychart").getContext("2d");
                 const myChart = new Chart(ctx, {
                     type: "radar",

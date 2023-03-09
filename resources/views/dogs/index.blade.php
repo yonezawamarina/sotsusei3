@@ -32,15 +32,10 @@
                                                 <h2 class="text-xl font-medium title-font text-gray-900 mt-5">{{$dog->name}}</h2>
                                                 <a class='text-blue-500' href="{{route('dogs.show',['id'=>$dog->id])}}">詳細</a></br>
                                                 <a class='text-blue-500' href="{{route('dogs.chart',['id'=>$dog->id])}}">グラフ情報へ</a></br>
-                                                
-                                                
-                                                
                                               </div>
                                               @endforeach
-                                              
-                                              
-                                              
                                             </div>
+                                            
                                           </div>
                                     </section>
                             </div>
