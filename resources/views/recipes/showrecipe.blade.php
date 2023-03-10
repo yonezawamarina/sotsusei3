@@ -1,2 +1,0 @@
-{{$recipes->name}}
-{{$recipes->process}}

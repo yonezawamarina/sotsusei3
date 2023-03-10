@@ -69,7 +69,7 @@ class CategoryController extends Controller
      * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function showrecipe($id)
+    public function gorecipe($id)
     {
         $recipes= Recipe::find($id);
         
@@ -78,7 +78,7 @@ class CategoryController extends Controller
         
         ];
         
-        return view('recipes.showrecipe',$data);
+        return view('recipes.gorecipe',$data);
     }
 
     /**
