@@ -10,23 +10,20 @@
     <div class="flex justify-center">
     <div class="w-full sm:w-2/3 lg:w-1/2">
          
-        <div>{{$dog->name}}</div> 
-        <div>{{$dog->calorie}}</div> 
-        
-        
-         
-              
+    
          <div class="p-2 w-full">
           <div class="relative">
             <label for="breed" class="leading-7 text-sm text-gray-600">ドッグフード選択</label>
             <form method="get"  action="/dogs/{{$dog->id}}/chart">
                 
-                <select name="dog_food_id" id="dog_food_id" onchange="setInitialIntake({{$dog->calorie}}/this.value)">
+                <select name="dog_food_id" id="dog_food_id" onchange="setInitialIntake({{$dog->calorie}}/this.value)" class="py-3 px-4 pr-9 block  border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400">
                         @foreach ($dog_foods as $df)
                          <option value="{{ $df->id }}"{{ $dog_food && $df->id == $dog_food->id ? ' selected' : '' }}>{{ $df->name}}</option>
                         @endforeach
                 </select></br>
-                  
+                
+                
+                
                 
                 <label for="inputIntake" class="leading-7 text-sm text-gray-600">摂取フード量</label>
                 
@@ -43,18 +40,21 @@
            </div>
            
            
-           <img src="/storage/images/{{$dog_food->image}}">
+           <img src="/storage/images/{{$dog_food->image}}" width="200px">
            
             
             </div>
     </div>
 </div>
+           
+           <form method="GET" action="{{ route('recipes.index') }}">
+              <button class="flex mx-auto text-white bg-yellow-500 border-0 py-2 px-8 focus:outline-none hover:bg-yellow-600 rounded text-lg" type="submit">レシピ検索</button>
+           </form>
+                       　
            　
            　
            　
-           　
-           　
-           <div class="flex justify-center">　
+          {{-- <div class="flex justify-center">　
            　 <div class"=w-5/12 mr-4">
                <p>選択したフードの栄養素(100ｇあたり)</p>
                    <table>
@@ -89,7 +89,7 @@
                             </thead>
                     </table>
             　</div>
-            </div>
+            </div>--}}
                    
                    <div class="py-12">
                         <div class="max-w-7xl mx-auto sm:px-2 lg:px-2">

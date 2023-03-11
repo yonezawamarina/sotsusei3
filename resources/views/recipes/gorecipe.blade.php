@@ -24,7 +24,7 @@
       
       
       <div class="flex justify-center">
-        <button class="inline-flex text-white bg-yellow-500 border-0 py-2 px-6 focus:outline-none hover:bg-yellow-600 rounded text-lg">Button</button>
+        <button class="inline-flex text-white bg-yellow-500 border-0 py-2 px-6 focus:outline-none hover:bg-yellow-600 rounded text-lg">作る</button>
       </div>
     </div>
   </div>
