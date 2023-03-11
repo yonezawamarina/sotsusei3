@@ -7,14 +7,13 @@
     
     
     
-    
-    
-         
     <div class="flex justify-center">
     <div class="w-full sm:w-2/3 lg:w-1/2">
          
         <div>{{$dog->name}}</div> 
         <div>{{$dog->calorie}}</div> 
+        
+        
          
               
          <div class="p-2 w-full">
@@ -29,18 +28,24 @@
                 </select></br>
                   
                 
-                <label for="breed" class="leading-7 text-sm text-gray-600">摂取フード量</label>
-                <input id="inputIntake" type="number" name="intake"  value="{{$intake}}" class="mt-4" /> 
-                <span>ｇ</span><!--追加-->
-                <button class=" text-white bg-indigo-500 border-0 py-1 px-4 focus:outline-none hover:bg-indigo-600 rounded text-lg">送信</button>
+                <label for="inputIntake" class="leading-7 text-sm text-gray-600">摂取フード量</label>
+                
+                <div>
+                  <label for="hs-trailing-button-add-on" class="sr-only">Label</label>
+                  <div class="flex rounded-md shadow-sm">
+                    <input type="number" id="inputIntake" name="intake" value="{{$intake}}" class="py-3 px-4 block  border-gray-200 shadow-sm rounded-l-md text-sm focus:z-10 focus:border-yellow-500 focus:ring-yellow-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400">
+                    <button  class="py-3 px-4 inline-flex flex-shrink-0 justify-center items-center gap-2 rounded-r-md border border-transparent font-semibold bg-yellow-500 text-white hover:bg-yellow-600 focus:z-10 focus:outline-none focus:ring-2 focus:ring-yellow-500 transition-all text-sm">
+                      送信
+                    </button>
+                  </div>
+                </div>
              </form>
            </div>
            
+           
            <img src="/storage/images/{{$dog_food->image}}">
            
-            <div>
-                <p>摂取フード量: {{ $intake }} g</p>
-            </div>
+            
             </div>
     </div>
 </div>
@@ -54,11 +59,11 @@
                <p>選択したフードの栄養素(100ｇあたり)</p>
                    <table>
                             <thead>
-                                    <td>たんぱく質</td>
-                                    <td>ビタミン</td>
-                                    <td>炭水化物</td>
-                                    <td>脂質</td>
-                                <tr  class="bg-white">
+                                    <td class="bg-yellow-500 text-white">たんぱく質</td>
+                                    <td class="bg-yellow-500 text-white">ビタミン</td>
+                                    <td class="bg-yellow-500 text-white">炭水化物</td>
+                                    <td class="bg-yellow-500 text-white">脂質</td>
+                                <tr>
                                     <th>{{ $dog_food->protein }}</th>
                                     <th>{{ $dog_food->vitamin }}</th>
                                     <th>{{ $dog_food->carbohydrate}}</th>
@@ -71,10 +76,10 @@
                 <p>摂取できる栄養素量</p>
                    <table>
                             <thead>
-                                    <td>たんぱく質</td>
-                                    <td>ビタミン</td>
-                                    <td>炭水化物</td>
-                                    <td>脂質</td>
+                                    <td class="bg-yellow-500 text-white">たんぱく質</td>
+                                    <td class="bg-yellow-500 text-white">ビタミン</td>
+                                    <td class="bg-yellow-500 text-white">炭水化物</td>
+                                    <td class="bg-yellow-500 text-white">脂質</td>
                                 <tr  class="bg-white">
                                     <th>{{ $dog_food->proteinAmount($intake) }}</th>
                                     <th>{{ $dog_food->vitaminAmount($intake) }}</th>
@@ -120,44 +125,35 @@
                         labels: ["タンパク質", "ビタミン", "脂質", "炭水化物"],
                         datasets: [
                             {
-                                label: "# of Votes",
+                                label: "ドッグフードを食べた時の摂取量",
                                 data: @json($dog_food->getGraphData($intake)),
                                 backgroundColor: [
-                                    "rgba(255, 99, 132, 0.2)",
-                                    "rgba(54, 162, 235, 0.2)",
-                                    "rgba(255, 206, 86, 0.2)",
-                                    "rgba(75, 192, 192, 0.2)",
-                                    "rgba(153, 102, 255, 0.2)",
+                                    "rgba(255,69,0,0.3)",
+                                    
+                                    
                                     
                                 ],
                                 borderColor: [
-                                    "rgba(255, 99, 132, 1)",
-                                    "rgba(54, 162, 235, 1)",
-                                    "rgba(255, 206, 86, 1)",
-                                    "rgba(75, 192, 192, 1)",
-                                    "rgba(153, 102, 255, 1)",
+                                    "rgba(255,182,193,0.8)",
+                                    
                                     
                                 ],
                                 borderWidth: 1,
                             },
                             
                             {
-                                label: "# of Votes",
+                                label: "必要栄養素量",
                                 data: @json($dog->getRequiredGraphData()),
                                 backgroundColor: [
-                                    "rgba(255, 99, 132, 0.2)",
-                                    "rgba(54, 162, 235, 0.2)",
-                                    "rgba(255, 206, 86, 0.2)",
-                                    "rgba(75, 192, 192, 0.2)",
-                                    "rgba(153, 102, 255, 0.2)",
+                                    
+                                    "rgba(255,255,0,0.2)",
+                                    
                                     
                                 ],
                                 borderColor: [
-                                    "rgba(255, 99, 132, 1)",
-                                    "rgba(54, 162, 235, 1)",
-                                    "rgba(255, 206, 86, 1)",
-                                    "rgba(75, 192, 192, 1)",
-                                    "rgba(153, 102, 255, 1)",
+                                    
+                                    "rgba(255,255,0,0,2)",
+                                    
                                     
                                 ],
                                 borderWidth: 1,
