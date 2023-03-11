@@ -1,17 +1,21 @@
-<nav x-data="{ open: false }" class="bg-white dark:bg-gray-800 border-b border-gray-100 dark:border-gray-700">
+<nav x-data="{ open: false }" class="bg-yellow-500  dark:bg-gray-800 border-b border-gray-100 dark:border-gray-700">
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
             <div class="flex">
-                <!-- Logo -->
-                <div class="shrink-0 flex items-center">
-                    <a href="{{ route('dashboard') }}">
-                        <x-application-logo class="block h-9 w-auto fill-current text-gray-800 dark:text-gray-200" />
-                    </a>
-                </div>
+               
 
                 <!-- Navigation Links -->
-                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                
+                <header class="text-gray-600 body-font">
+                  <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
+                    <a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-10 h-10 text-white p-2 bg-white-500 rounded-full" viewBox="0 0 24 24">
+                        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+                      </svg>
+                      <span class="ml-3 text-xl">Emeal</span>
+                    </a>
+                    <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <!--<x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">-->
                     <!--    {{ __('Dashboard') }}-->
                     <!--</x-nav-link>-->
@@ -21,7 +25,19 @@
                         <x-nav-link :href="route('dogs.create')" :active="request()->routeIs('dogs.index')">
                        新規登録
                      </x-nav-link>
-                </div>
+                    </div>
+                    
+                  </div>
+                </header>
+                
+                
+                
+                
+                
+                
+                
+                
+                
                 
                 <!-- Navigation Links -->
                 

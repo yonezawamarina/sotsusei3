@@ -1,5 +1,10 @@
 @vite(['resources/css/app.css', 'resources/js/app.js'])
-
+<x-app-layout>
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
+            レシピ詳細
+        </h2>
+    </x-slot>
 
 <section class="text-gray-600 body-font">
   <div class="container mx-auto flex px-5 py-24 md:flex-row flex-col items-center">
@@ -24,3 +29,4 @@
     </div>
   </div>
 </section>
+</x-app-layout>

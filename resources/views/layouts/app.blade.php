@@ -15,7 +15,7 @@
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script><!--追加 -->
     </head>
     <body class="font-sans antialiased">
-        <div class="min-h-screen bg-yellow-100 dark:bg-gray-900">
+        <div class="min-h-screen bg-white-100 dark:bg-gray-900">
             @include('layouts.navigation')
 
             <!-- Page Heading -->

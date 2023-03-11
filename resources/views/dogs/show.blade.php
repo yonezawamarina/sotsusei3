@@ -24,7 +24,6 @@
                                   <dt>体重</dt>
                                   <dd>{{$dog->weight}}kg</dd>
                                   
-                                  
                                   <dt>性別</dt>
                                   <dd>{{["男の子","女の子"][$dog->gender]}}</dd>
                                   
@@ -36,46 +35,25 @@
                                   
                                   <dt>1日に必要な摂取カロリー</dt>
                                   <dd>{{$dog->calorie}}</dd>
-                                  
-                                  
-                                  
                               </dl>   
                                 
-                                
-                                
-                                
-                                
-                                
-                                
-                            
-                                
-                                
-                                
-                               
-
-                               
-                                 
-                                
-                                
-                                
-                                
-                           
+                        
+                        
+                            <div class="flex flex-col justify-center items-center">
                             　　<form method='get' action={{route('dogs.edit',['id' => $dog->id])}}>
-                                <div class="p-2 w-full">
-                                <button class="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">編集する</button>
+                                    <div class="p-2 w-full">
+                                      <button class="flex mx-auto text-white bg-yellow-500 border-0 py-2 px-8 focus:outline-none hover:bg-yellow-600 rounded text-lg ">編集する</button>
+                                    </div>
                                  </form>
                                   
-                                <form id='delete_{{$dog->id}}'class="mt-40" method='post' action={{route('dogs.destroy',['id' => $dog->id])}}>
-                                   @csrf
-                                <div class="p-2 w-full">
-                           
-                                   <a href="#" data-id="{{ $dog->id }}" onclick="deletePost(this)" class="flex mx-auto text-white bg-pink-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">削除する</a>
-                                
-                                </div>
+                                <form id='delete_{{$dog->id}}'class="  class="my-4" method='post' action={{route('dogs.destroy',['id' => $dog->id])}}>
+                                    @csrf
+                                　　<div class="p-2 w-full">
+                                      <a href="#" data-id="{{ $dog->id }}" onclick="deletePost(this)" class=" text-white bg-yellow-500 border-0 py-2 px-8 focus:outline-none hover:bg-yellow-600 rounded text-lg">削除する</a>     
+                                    </div>
                                 </form>
-                
-                             
                             </div>
+                            
                           </div>
                         </section>
                     </div>
