@@ -37,16 +37,16 @@
                                     <div class="flex">
                                         <button id="all" class="flex mx-auto text-white bg-yellow-500 border-0 py-2 px-8 focus:outline-none hover:bg-red-300 rounded text-lg">全量</button>
                                         <button id="half" class="flex mx-auto text-white bg-yellow-500 border-0 py-2 px-8 focus:outline-none hover:bg-yellow-300 rounded text-lg">1/2</button>
-                                        <button id="half3" class="flex mx-auto text-white bg-yellow-500 border-0 py-2 px-8 focus:outline-none hover:bg-yellow-300 rounded text-lg">1/3</button>
+                                        <button id="onethird" class="flex mx-auto text-white bg-yellow-500 border-0 py-2 px-8 focus:outline-none hover:bg-yellow-300 rounded text-lg">1/3</button>
                                     </div>
                                     
                                     
-                                    <!--摂取フード量と送信ボタン-->
+                                    <!--摂取フード量-->
                                         <div>
                                           <label for="hs-trailing-button-add-on" class="sr-only">Label</label>
                                           <div class="flex rounded-md shadow-sm">
-                                            <input type="number" id="inputIntake" name="intake" value="{{$intake}}" class="py-3 px-4 block  border-gray-200 shadow-sm rounded-l-md text-sm focus:z-10 focus:border-yellow-500 focus:ring-yellow-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400">
-                                            <button  class="py-3 px-4 inline-flex flex-shrink-0 justify-center items-center gap-2 rounded-r-md border border-transparent font-semibold bg-yellow-500 text-white hover:bg-yellow-600 focus:z-10 focus:outline-none focus:ring-2 focus:ring-yellow-500 transition-all text-sm">グラフ表示</button>
+                                            <input type="number" id="inputIntake" name="intake" value="{{$intake}}" class="py-3 px-4 block  border-gray-200 shadow-sm rounded-l-md text-sm focus:z-10 focus:border-yellow-500 focus:ring-yellow-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400"><span>g</span>
+                                            
                                           </div>
                                         </div>          
                               </form>
@@ -69,9 +69,6 @@
                                             </div>
                                         </div>
                                     </div>
-                               
-                
-           
                </div>          
 
             <script>
@@ -80,6 +77,52 @@
                function setInitialIntake(value){
                    document.querySelector("#inputIntake").value = parseInt(value);
                }
+               
+               
+               //1/2ボタンを押した時
+                  const button2 = document.getElementById('half');
+               // ボタンがクリックされたときの処理
+                  button2.addEventListener('click', function() {
+                  // インプットタグの要素を取得
+                  const input = document.getElementById('inputIntake');
+                
+                  // インプットタグの値を取得して数値に変換
+                  const inputValue = Number(input.value);
+                
+                  // 値を半分にする
+                  
+                 const halfValue = inputValue /2;
+                
+                  // インプットタグに結果を表示
+                  input.value = parseInt(halfValue);
+                });
+                
+                
+                 //1/3ボタンを押した時
+                  const button3 = document.getElementById('onethird');
+               // ボタンがクリックされたときの処理
+                  button3.addEventListener('click', function() {
+                  // インプットタグの要素を取得
+                  const input3 = document.getElementById('inputIntake');
+                
+                  // インプットタグの値を取得して数値に変換
+                  const inputValue3 = Number(input3.value);
+                
+                  // 値を半分にする
+                  const halfValue3 = inputValue3 / 3;
+                  
+                  // インプットタグに結果を表示
+                  input3.value = parseInt(halfValue3);
+                });
+                 
+                 
+                 
+                 
+                     
+               
+               
+               
+               
                
                
                
