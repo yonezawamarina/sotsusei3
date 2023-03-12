@@ -51,7 +51,7 @@ class RecipeController extends Controller
     public function show(Category $category)
     {
         $recipes = $category->recipes;
-         dd($recipes);
+        
         return view('recipes.index', compact('recipes', 'category'));
     }
 

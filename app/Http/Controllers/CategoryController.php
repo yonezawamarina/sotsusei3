@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Recipe;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;//セッション追加
 
 class CategoryController extends Controller
 {
@@ -17,8 +18,7 @@ class CategoryController extends Controller
     {
         
         $categories = Category::all();
-     
-    
+        
          return view('recipes.index', ['categories' => $categories]);
     }
 
@@ -49,11 +49,12 @@ class CategoryController extends Controller
      * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Request $request, $id)
     {
         $category= Category::find($id);
         
         $recipes = $category->recipes;
+    
         
         $data = [
             'category' => $category,
@@ -69,17 +70,42 @@ class CategoryController extends Controller
      * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function gorecipe($id)
+    public function gorecipe(Request $request,$id)
     {
         $recipes= Recipe::find($id);
         
+        //セッションにrecipe->idを保存する　配列で！
+        // $array = ['recipe1' =>$recipes->id,'recipe2' =>'$recipes->id'];
+        $se_recipe_id = $request->session()->put('recipes_id', $recipes->id);
+        
+        
         $data = [
              'recipes' => $recipes,
-        
         ];
-        
         return view('recipes.gorecipe',$data);
     }
+    
+    
+      public function chartall(Request $request,$id)
+    {
+        $recipes= Recipe::find($id);
+        
+        //セッション取得
+        $se_dog_id = $request->session()->get('dog_id'); 
+        $se_dogfood_id = $request->session()->get('dogfood_id'); 
+        $se_recipe_id = $request->session()->get('recipes_id'); 
+        
+        $data = [
+             'se_dog_id' => $se_dog_id,
+             'se_dogfood_id' => $se_dogfood_id,
+             'se_recipe_id' => $se_recipe_id,
+             'recipes' => $recipes,
+        ];
+        return view('recipes.chartall',$data);
+    }
+    
+    
+
 
     /**
      * Update the specified resource in storage.

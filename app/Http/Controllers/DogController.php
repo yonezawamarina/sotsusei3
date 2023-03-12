@@ -6,7 +6,7 @@ use App\Models\Dog;
 use App\Models\DogFood;
 use App\Models\DogBreed;
 use App\Models\LifeStage;
-
+use Illuminate\Support\Facades\Session;//セッション追加
 
 
 use Validator;  //この1行だけ追加！
@@ -194,10 +194,12 @@ class DogController extends Controller
         //ﾄﾞｯｸﾞﾌｰﾄﾞ全件取得(プルダウン用)
         $dog_foods = DogFood::get();
         
+        //セッションにdog->idを保存する
+        $se_dog_id = $request->session()->put('dog_id', $dog->id);
+        $se_dogfood_id = $request->session()->put('dogfood_id', $dog_food->id);
         
         //ビューにデータを渡す
         $data = [
-            
             "dog" => $dog,
             "dog_food" => $dog_food,
             "dog_foods" => $dog_foods,

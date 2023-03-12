@@ -51,21 +51,11 @@ Route::prefix('dogs')
  Route::get('/', 'index')->name('index');//カテゴリー一覧
  Route::get('/{id}', 'show')->name('show');//レシピ一覧
  Route::get('/{id}/gorecipe', 'gorecipe')->name('gorecipe');//レシピ詳細
-
+ Route::get('/{id}/chartall', 'chartall')->name('chartall');//合計グラフ
  });
  
  
  
- 
- 
-//  Route::get('recipes.show',[CategoryController::class,'show'])->name('recipes.show');
- 
- 
- 
-
- 
-//  Route::get('/dogfoods',[DogFoodController::class,'show'])->name('dogfoods.show');
-
 
 Route::get('/', function () {
     return view('welcome');
