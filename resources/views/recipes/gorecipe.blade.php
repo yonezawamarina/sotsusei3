@@ -34,6 +34,23 @@
       </div>
       
       
+      <!---------セッションで取得--------->
+      <!--ドッグID取得</br>-->ドッグID取得:{{$se_dog_id}}</br>
+　　　<!--ドッグフードID取得 -->ドッグフードID取得:{{$se_dogfood_id}}</br> 
+      <!--必要摂取カロリーー-->必要摂取カロリー：{{$se_dog_calorie}}</br>
+      <!--必要摂取カロリーをとるためのフード量-->必要カロリーをとるためのフード量：{{($se_dog_calorie/$se_dogfood_kl)*100}}</br> 
+      <!--ドッグフード量ーー-->ドッグフード量：{{$se_intake}}</br>
+      <!--ドッグフードでの摂取カロリー-->ドッグフードでの摂取カロリー：{{($se_recipe_id*$se_intake)/($se_dog_calorie/$se_dogfood_kl)*100}}</br> 
+      <!--残カロリー-->★残カロリー：{{$se_dog_calorie-($se_recipe_id*$se_intake)/($se_dog_calorie/$se_dogfood_kl)*100}}</br> 
+      <!--レシピID-->レシピID取得:
+      
+
+
+      
+      
+      
+      
+      
     </div>
   </div>
 </section>

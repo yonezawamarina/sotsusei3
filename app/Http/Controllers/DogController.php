@@ -31,23 +31,6 @@ class DogController extends Controller
      
  
 
-    public function daykcl(Request $request)
-    {
-        $data = [
-            'name'=>$request->name,
-            'weight'=>$request->weight,
-            'gender'=>$request->gender,
-            'age'=>$request->age,
-            'dog_breed_id'=>$request->dog_breed_id,
-            'life_stage_id'=>$request->life_stage_id,
-            
-        ];
-      
-        return view('dogs/daykcl', $data);
-    }
-     
-     
-     
     
     public function index()
     {
@@ -197,6 +180,9 @@ class DogController extends Controller
         //セッションにdog->idを保存する
         $se_dog_id = $request->session()->put('dog_id', $dog->id);
         $se_dogfood_id = $request->session()->put('dogfood_id', $dog_food->id);
+        $se_intake = $request->session()->put('intake', $intake);
+        $se_dogfood_kl = $request->session()->put('dogfood_kl', $dog_food->kilocalorie);
+       
         
         //ビューにデータを渡す
         $data = [

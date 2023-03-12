@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Dog;
+use App\Models\DogFood;
 use App\Models\Recipe;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;//セッション追加
@@ -78,12 +80,27 @@ class CategoryController extends Controller
         // $array = ['recipe1' =>$recipes->id,'recipe2' =>'$recipes->id'];
         $se_recipe_id = $request->session()->put('recipes_id', $recipes->id);
         
+         //セッション取得
+        $se_dog_id = $request->session()->get('dog_id'); 
+        $se_dogfood_id = $request->session()->get('dogfood_id'); 
+        $se_recipe_id = $request->session()->get('recipes_id'); 
+        $se_dog_calorie = $request->session()->get('dogcalorie');
+        $se_intake = $request->session()->get('intake');
+        $se_dogfood_kl = $request->session()->get('dogfood_kl');
+        
         
         $data = [
+             'se_dogfood_kl' => $se_dogfood_kl,
+             'se_intake' => $se_intake,
+             'se_dog_calorie' => $se_dog_calorie,
+             'se_dog_id' => $se_dog_id,
+             'se_dogfood_id' => $se_dogfood_id,
+             'se_recipe_id' => $se_recipe_id,
              'recipes' => $recipes,
         ];
         return view('recipes.gorecipe',$data);
     }
+    
     
     
       public function chartall(Request $request,$id)
