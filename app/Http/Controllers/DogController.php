@@ -77,6 +77,16 @@ class DogController extends Controller
 	          $dogs->user_id = Auth::id();//ここを追加
 	          $dogs->dog_breed_id = $request->dog_breed_id;
 	          $dogs->life_stage_id = $request->life_stage_id; 
+	          
+	          //画像登録のために追加//
+	           if ($request->hasFile('image')) {
+                    $file = $request->file('image');
+                    $filename = time() . '_' . $file->getClientOriginalName();
+                    $path = $file->storeAs('public/images', $filename);
+                    $dogs->image = $filename;
+                }
+	              
+	          
 	          $dogs->save(); 
 	          return redirect('/');
  

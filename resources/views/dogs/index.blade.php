@@ -27,9 +27,10 @@
                                             　@foreach($dogs as $dog)</br>
                                               <div class="p-4 md:w-1/3 sm:mb-0 mb-6">
                                                 <div class="rounded-lg h-64 overflow-hidden">
-                                                  <img alt="content" class="object-cover object-center h-full w-full" src="https://dummyimage.com/1203x503">
+                                                  <img class="object-cover object-center w-full h-full block"  src="/storage/images/{{$dog->image}}">
                                                 </div>
                                                 <h2 class="text-xl font-medium title-font text-gray-900 mt-5">{{$dog->name}}</h2>
+                                                
                                                 <a class='text-blue-500' href="{{route('dogs.show',['id'=>$dog->id])}}">詳細</a></br>
                                                 <a class='text-blue-500' href="{{route('dogs.chart',['id'=>$dog->id])}}">グラフ情報へ</a></br>
                                               </div>

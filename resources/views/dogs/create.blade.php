@@ -13,7 +13,7 @@
                     <section class="text-gray-600 body-font relative">
                         <!--<form method="post" action="daykcl">-->
                            
-                           <form method="post" action="{{route('dogs.store')}}">
+                           <form method="post" action="{{route('dogs.store')}}" enctype="multipart/form-data">
                         　　 @csrf
                             <div class="lg:w-1/2 md:w-2/3 mx-auto">
                               <div class="flex flex-wrap -m-2">
@@ -74,6 +74,9 @@
                                     <input type="text" id="age" name="age" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                                   </div>
                                 </div>
+                                
+                                <!--画像登録-->
+                                 <input type="file" name="image">
                                 
   
                            
