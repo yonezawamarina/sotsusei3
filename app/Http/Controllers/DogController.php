@@ -88,7 +88,7 @@ class DogController extends Controller
 	              
 	          
 	          $dogs->save(); 
-	          return redirect('/');
+	          return redirect('/dogs');
  
     }
 
