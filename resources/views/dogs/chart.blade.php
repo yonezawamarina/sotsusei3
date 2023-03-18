@@ -16,7 +16,7 @@
    
                     <div class="w-1/2">
                         
-                              <form method="get"  action="/dogs/{{$dog->id}}/chart">
+                              <form method="get"  action="{{route('dogs.chart',$dog->id)}}">
                 
                                     <!--ドッグフード選択セレクトボックス-->
                                     <div class="flex item-center "><!--セレクトボックスと画像横並び-->
@@ -29,7 +29,7 @@
                                                 </select>
                                             </div>
                                             <!--ドッグフードimage-->
-                                            <img src="/storage/images/{{$dog_food->image}}" id="dog_food_image" width="100px">
+                                            <img src="{{Storage::url('images')}}/{{$dog_food->image}}" id="dog_food_image" width="100px">
                                     </div>
                                     
                                     <!--フード量選択-->
