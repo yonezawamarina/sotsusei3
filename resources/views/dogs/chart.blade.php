@@ -29,7 +29,7 @@
                                                 </select>
                                             </div>
                                             <!--ドッグフードimage-->
-                                            <img src="{{Storage::url('images')}}/{{$dog_food->image}}" id="dog_food_image" width="100px">
+                                            <img src="{{url('/storage/images')}}/{{$dog_food->image}}" id="dog_food_image" width="100px">
                                     </div>
                                     
                                     <!--フード量選択-->
