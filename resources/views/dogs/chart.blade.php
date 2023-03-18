@@ -84,17 +84,17 @@
                // ボタンがクリックされたときの処理
                   button2.addEventListener('click', function() {
                   // インプットタグの要素を取得
-                  const input = document.getElementById('inputIntake');
+                 const input2 = document.getElementById('inputIntake');
                 
                   // インプットタグの値を取得して数値に変換
-                  const inputValue = Number(input.value);
+                  const inputValue = {{$intake}}
                 
                   // 値を半分にする
                   
                  const halfValue = inputValue /2;
                 
                   // インプットタグに結果を表示
-                  input.value = parseInt(halfValue);
+                  input2.value = parseInt(halfValue);
                 });
                 
                 
