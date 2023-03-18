@@ -20,7 +20,7 @@
                                             　<!--画像-->
                                               <div class="p-4 md:w-1/3 sm:mb-0 mb-6">
                                                 <div class="rounded-lg h-64 overflow-hidden">
-                                                  <img class="object-cover object-center w-full h-full block"  src="/storage/images/{{$dog->image}}">
+                                                  <img class="object-cover object-center w-full h-full block"  src="{{url('/storage/images')}}/{{$dog->image}}">
                                                 </div>
                                                 　<!--名前-->
                                                  <div class="flex">
