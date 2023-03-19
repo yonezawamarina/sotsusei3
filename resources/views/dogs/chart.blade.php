@@ -19,10 +19,11 @@
                               <form method="get"  action="{{route('dogs.chart',$dog->id)}}">
                 
                                     <!--ドッグフード選択セレクトボックス-->
-                                    <div class="flex item-center "><!--セレクトボックスと画像横並び-->
+                                    <div class="flex item-center justify-center"><!--セレクトボックスと画像横並び-->
+                                       <!--<div class="flex flex-col items-start w-full">-->
                                             <div class="mt-8">
                                                 <label for="breed" class="leading-7 text-sm text-gray-600">ドッグフード選択</label>
-                                                <select name="dog_food_id" id="dog_food_id" onchange="setInitialIntake({{$dog->calorie}}/this.value)"  class="py-3 px-4 pr-9 block  border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400">
+                                                <select name="dog_food_id" id="dog_food_id" onchange="setInitialIntake({{$dog->calorie}}/this.value)"  class="py-3 px-4 pr-9 block  border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500" style="width: 300px;">
                                                     @foreach ($dog_foods as $df)
                                                      <option value="{{ $df->id }}"{{ $dog_food && $df->id == $dog_food->id ? ' selected' : '' }}>{{ $df->name}}</option>
                                                     @endforeach
@@ -33,20 +34,20 @@
                                     </div>
                                     
                                     <!--フード量選択-->
-                                    <label for="inputIntake" class="leading-7 text-sm text-gray-600">ドッグフード量選択</label>
-                                    <div class="flex">
-                                        <button id="all" class="flex mx-auto text-white bg-yellow-500 border-0 py-2 px-8 focus:outline-none hover:bg-red-300 rounded text-lg">全量</button>
-                                        <button id="half" class="flex mx-auto text-white bg-yellow-500 border-0 py-2 px-8 focus:outline-none hover:bg-yellow-300 rounded text-lg">1/2</button>
-                                        <button id="onethird" class="flex mx-auto text-white bg-yellow-500 border-0 py-2 px-8 focus:outline-none hover:bg-yellow-300 rounded text-lg">1/3</button>
+                                     <div class="flex flex-col items-center justify-center mt-10">
+                                        <label for="inputIntake" class="leading-7 text-sm text-gray-600">ドッグフード量選択</label>
+                                        <div class="flex">
+                                             <button id="all" class="flex mx-auto mr-2 text-white bg-yellow-500 border-0 py-2 px-8 focus:outline-none hover:bg-yellow-300 rounded text-lg">全量</button>
+                                             <button id="half" class="flex mx-auto mr-2 text-white bg-yellow-500 border-0 py-2 px-8 focus:outline-none hover:bg-yellow-300 rounded text-lg">1/2</button>
+                                             <button id="onethird" class="flex mx-auto text-white bg-yellow-500 border-0 py-2 px-8 focus:outline-none hover:bg-yellow-300 rounded text-lg">1/3</button>
+                                        </div>
                                     </div>
                                     
-                                    
                                     <!--摂取フード量-->
-                                        <div>
-                                          <label for="hs-trailing-button-add-on" class="sr-only">Label</label>
-                                          <div class="flex rounded-md shadow-sm">
+                                        <div class="flex item-center justify-center mt-10">
+                                          <label for="inputIntake" class="leading-7 text-sm text-gray-600">ドッグフード量</label>
+                                          <div class="flex rounded-md shadow-sm mt-6">
                                             <input type="number" id="inputIntake" name="intake" value="{{$intake}}" class="py-3 px-4 block  border-gray-200 shadow-sm rounded-l-md text-sm focus:z-10 focus:border-yellow-500 focus:ring-yellow-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400"><span>g</span>
-                                            
                                           </div>
                                         </div>          
                               </form>
@@ -59,7 +60,7 @@
                            　      <div class="w-1/2">
                                        <div class="py-12">
                                             <div class="max-w-7xl mx-auto sm:px-2 lg:px-2">
-                                                <div class="bg-yellow-200 dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg w-1/2">
+                                                <div class="bg-gray-100 dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg w-1/2">
                                                     <div style="width:1300px;height:400px;"　class="p-6 text-gray-900 dark:text-gray-100">
                                                     
                                                     <canvas id="mychart"></canvas>    

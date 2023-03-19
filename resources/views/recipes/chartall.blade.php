@@ -24,7 +24,7 @@ carbohydrate{{$carbohydrate}}
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-             のごはん一覧
+         {{$dog->name}} のごはん一覧
         </h2>
     </x-slot>
 
@@ -79,7 +79,7 @@ carbohydrate{{$carbohydrate}}
                            　      <div class="w-1/2">
                                        <div class="py-12">
                                             <div class="max-w-7xl mx-auto sm:px-2 lg:px-2">
-                                                <div class="bg-yellow-200 dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg w-1/2">
+                                                <div class="bg-gray-100 dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg w-1/2">
                                                     <div style="width:1300px;height:400px;"　class="p-6 text-gray-900 dark:text-gray-100">
                                                     
                                                     <canvas id="mychart"></canvas>    
