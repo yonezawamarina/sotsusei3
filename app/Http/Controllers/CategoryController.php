@@ -5,9 +5,14 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Dog;
 use App\Models\DogFood;
+use App\Models\DogBreed;
+use App\Models\LifeStage;
 use App\Models\Recipe;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;//セッション追加
+
+
+
 
 class CategoryController extends Controller
 {
@@ -106,6 +111,19 @@ class CategoryController extends Controller
       public function chartall(Request $request,$id)
     {
         $recipes= Recipe::find($id);
+         $dog = Dog::find($id);
+         $dog_food_id = $request->dog_food_id;
+        
+        
+        if($dog_food_id){
+            $dog_food = DogFood::find($dog_food_id);
+        }else{
+            $dog_food = new DogFood;
+        }
+        $intake = $request->intake ?? 0;
+        
+         
+         
         
         //セッション取得
         $se_dog_id = $request->session()->get('dog_id'); 
@@ -116,10 +134,19 @@ class CategoryController extends Controller
         $se_dogfood_kl = $request->session()->get('dogfood_kl');
         $se_dogcalorie = $request->session()->get('dogcalorie');
         
-        
-        
+        $protein = ((($se_dogcalorie-$se_dogfood_kl)/$recipes->kilocalorie)*$recipes->protein)/100;
+        $carbohydrate = ((($se_dogcalorie-$se_dogfood_kl)/$recipes->kilocalorie)*$recipes->carbohydrate)/100;
+        $fat = ((($se_dogcalorie-$se_dogfood_kl)/$recipes->kilocalorie)*$recipes->fat)/200;
+        $vitamin = ((($se_dogcalorie-$se_dogfood_kl)/$recipes->kilocalorie)*$recipes->vitamin)/100;
         
         $data = [
+            "protein" => $protein,
+            "carbohydrate" => $carbohydrate,
+            "fat" => $fat,
+            "vitamin" => $vitamin,
+            "intake" => $intake,
+              "dog" => $dog,
+              "dog_food" => $dog_food,
              'se_dogfood_kl' => $se_dogfood_kl,
              'se_intake' => $se_intake,
              'se_dog_calorie' => $se_dog_calorie,

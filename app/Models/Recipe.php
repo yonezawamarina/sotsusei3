@@ -15,4 +15,12 @@ class Recipe extends Model
     } 
     
     
+    
+    
+    //
+     public function getRecipeProteinAttribute(){
+        return ($this->vitamin*10);
+    }
+    
+    
 }

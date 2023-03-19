@@ -48,6 +48,9 @@ class DogFood extends Model
         return $this->carbohydrate * ($intake/100);
     }
     
+    
+    
+
     public function getGraphData($intake)
     {
         $data = [
