@@ -1,8 +1,12 @@
 
 ドッグID取得:{{$se_dog_id}}</br>
 ドッグフードID取得:{{$se_dogfood_id}}</br> 
-レシピID取得:{{$se_recipe_id}} 
-
+レシピID取得:{{$se_recipe_id}} </br>
+ドッグフード量：{{$se_intake}}</br>
+1日の必要カロリー：{{$se_dogcalorie}}</br>
+ドッグフードでの摂取カロリー：{{$se_dogfood_kl}}</br>
+ドッグフードを食べたうえでの残カロリー：{{$se_dogcalorie-$se_dogfood_kl}}</br>
+選択したレシピのビタミン量/100ｇ{{$recipes->vitamin}}
 
 
 @vite(['resources/css/app.css', 'resources/js/app.js'])
@@ -32,7 +36,7 @@
       
       
      
-      <!--作るボタン-->
+      <!--レシピ追加ボタン-->
       <div class="flex justify-end">
          <form method="GET" action="{{ route('recipes.index')}}">
            <button class="flex mx-auto text-white bg-red-500 border-0 py-2 px-8 focus:outline-none hover:bg-red-600 rounded text-lg" type="submit">レシピ追加</button>

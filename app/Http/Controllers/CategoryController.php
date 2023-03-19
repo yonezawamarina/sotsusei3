@@ -111,12 +111,23 @@ class CategoryController extends Controller
         $se_dog_id = $request->session()->get('dog_id'); 
         $se_dogfood_id = $request->session()->get('dogfood_id'); 
         $se_recipe_id = $request->session()->get('recipes_id'); 
+        $se_dog_calorie = $request->session()->get('dogcalorie');
+        $se_intake = $request->session()->get('intake');
+        $se_dogfood_kl = $request->session()->get('dogfood_kl');
+        $se_dogcalorie = $request->session()->get('dogcalorie');
+        
+        
+        
         
         $data = [
+             'se_dogfood_kl' => $se_dogfood_kl,
+             'se_intake' => $se_intake,
+             'se_dog_calorie' => $se_dog_calorie,
              'se_dog_id' => $se_dog_id,
              'se_dogfood_id' => $se_dogfood_id,
              'se_recipe_id' => $se_recipe_id,
              'recipes' => $recipes,
+             'se_dogcalorie' => $se_dogcalorie
         ];
         return view('recipes.chartall',$data);
     }

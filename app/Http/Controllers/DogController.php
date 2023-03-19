@@ -187,12 +187,12 @@ class DogController extends Controller
         //ﾄﾞｯｸﾞﾌｰﾄﾞ全件取得(プルダウン用)
         $dog_foods = DogFood::get();
         
-        //セッションにdog->idを保存する
+        //セッションに保存する
         $se_dog_id = $request->session()->put('dog_id', $dog->id);
         $se_dogfood_id = $request->session()->put('dogfood_id', $dog_food->id);
         $se_intake = $request->session()->put('intake', $intake);
         $se_dogfood_kl = $request->session()->put('dogfood_kl', $dog_food->kilocalorie);
-       
+        $se_dogcalorie = $request->session()->put('dogcalorie',$dog->calorie);
         
         //ビューにデータを渡す
         $data = [
