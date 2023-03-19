@@ -9,7 +9,6 @@
 選択したレシピのビタミン量/100ｇ{{$recipes->vitamin}}</br>
 ★選択したレシピを残カロリー分食べた時のビタミン摂取量：{{(($se_dogcalorie-$se_dogfood_kl)/$recipes->kilocalorie)*$recipes->vitamin}}</br>
 @json($dog_food->getGraphData($intake))</br>
-
 @json($dog->getRequiredGraphData())</br>
 {{$intake}}</br>
 {{$recipes->recipeprotein}}</br>
