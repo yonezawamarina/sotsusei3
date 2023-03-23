@@ -27,72 +27,52 @@ carbohydrate{{$carbohydrate}}
          {{$dog->name}}のごはん一覧
         </h2>
     </x-slot>
-<div class="flex item-center">
-     <div class="w-1/2">
-<section class="text-gray-600 body-font">
-  <div class="container mx-auto flex px-5 py-24 md:flex-row flex-col items-center">
-    <div class="lg:max-w-lg lg:w-full md:w-1/2 w-5/6 mb-10 md:mb-0">
-      
-    <div class="lg:flex-grow md:w-1/2 lg:pl-24 md:pl-16 flex flex-col md:items-start md:text-left items-center text-center">
-      <p>ドッグフード</p>
-      <p class="mb-8 leading-relaxed">{{$se_dog_id}}：カロリー</p>
-      
-      
-      <p>レシピ</p>
-      <p class="mb-8 leading-relaxed">{{$se_recipe_id}}：カロリー</p>
-      
-      
-     
-      
-      
-      
-      
-     
-      <!--レシピ追加ボタン-->
-      <div class="flex justify-end">
-         <form method="GET" action="{{ route('recipes.index')}}">
-           <button class="flex mx-auto text-white bg-red-500 border-0 py-2 px-8 focus:outline-none hover:bg-red-600 rounded text-lg" type="submit">レシピ追加</button>
-        </form>
-      </div>
-      
-      
-      
-      
-           
-     </div>          
-      
-      
-       
-                       
-        
-                        
-                                                    
-                                                  
-                                                   
     
-      
-
-    </div>
-  </div>
-  </div>
+    
+       <div class="flex item-center">
+             <div class="w-1/2">
+                <section class="text-gray-600 body-font">
+                  <div class="container mx-auto flex px-5 py-24 md:flex-row flex-col items-center">
+                    <div class="lg:max-w-lg lg:w-full md:w-1/2 w-5/6 mb-10 md:mb-0">
+                     <div class="lg:flex-grow md:w-1/2 lg:pl-24 md:pl-16 flex flex-col md:items-start md:text-left items-center text-center">
+                       <p>ドッグフード</p>
+                         <p class="mb-8 leading-relaxed">{{$se_dogfood_id}}</p>
+                       
+                      
+                        <p>レシピ</p>
+                          <p class="mb-8 leading-relaxed">{{$se_recipe_id}}</p>
+              
+             
+                      <!--レシピ追加ボタン-->
+                      <div class="flex justify-end">
+                         <form method="GET" action="{{ route('recipes.index')}}">
+                           <button class="flex mx-auto text-white bg-red-500 border-0 py-2 px-8 focus:outline-none hover:bg-red-600 rounded text-lg" type="submit">レシピ追加</button>
+                        </form>
+                      </div>
+                      
+                   </div>          
+                </div>
+            </div>
+          </div>
   
   
    <!--グラフ表示-->            　
-                           　      <div class="w-1/2">
-                                       <div class="py-12">
-                                            <div class="max-w-7xl mx-auto sm:px-2 lg:px-2">
-                                                <div class="bg-gray-100 dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg w-1/2">
-                                                    <div style="width:1300px;height:400px;"　class="p-6 text-gray-900 dark:text-gray-100">
-                                                    
-                                                    <canvas id="mychart"></canvas>    
-                                                        
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-</div>
-</section>
+       　      <div class="w-1/2">
+                   <div class="py-12">
+                        <div class="max-w-7xl mx-auto sm:px-2 lg:px-2">
+                            <div class="bg-gray-100 dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg w-1/2">
+                                <div style="width:1300px;height:400px;"　class="p-6 text-gray-900 dark:text-gray-100">
+                                
+                                <canvas id="mychart"></canvas>    
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+             </section> 
+         </div>
+          
 
 
 
@@ -116,10 +96,10 @@ carbohydrate{{$carbohydrate}}
                                 label: "レシピを食べた時の摂取量",
                                 data: [{{$protein}},{{$carbohydrate}},{{$fat}},{{$vitamin}}],
                                 backgroundColor: [
-                                    "rgba(255,69,0,0.3)",
+                                    "rgba(0, 255, 255, 0.2)",
                                 ],
                                 borderColor: [
-                                    "rgba(255,182,193,0.8)",
+                                    "rgba(0, 255, 255, 0.2)",
                                 ],
                                 borderWidth: 1,
                             },
@@ -144,19 +124,13 @@ carbohydrate{{$carbohydrate}}
                                 label: "ドッグフードを食べた時の摂取量",
                                 data: [1,2,3,4],
                                 backgroundColor: [
-                                    "rgba(400,80,10,0.2)",
+                                    "rgba(400,80,10,0.4)",
                                 ],
                                 borderColor: [
-                                    "rgba(400,80,10,0.2)",
+                                    "rgba(400,80,10,0.4)",
                                 ],
                                 borderWidth: 1,
                             },
-                            
-                            
-                            
-                            
-                            
-                            
                             
                             
                         ],

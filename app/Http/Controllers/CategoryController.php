@@ -134,10 +134,10 @@ class CategoryController extends Controller
         $se_dogfood_kl = $request->session()->get('dogfood_kl');
         $se_dogcalorie = $request->session()->get('dogcalorie');
         
-        $protein = ((($se_dogcalorie-$se_dogfood_kl)/$recipes->kilocalorie)*$recipes->protein)/100;
-        $carbohydrate = ((($se_dogcalorie-$se_dogfood_kl)/$recipes->kilocalorie)*$recipes->carbohydrate)/100;
-        $fat = ((($se_dogcalorie-$se_dogfood_kl)/$recipes->kilocalorie)*$recipes->fat)/200;
-        $vitamin = ((($se_dogcalorie-$se_dogfood_kl)/$recipes->kilocalorie)*$recipes->vitamin)/100;
+        $protein = ((($se_dogcalorie-$se_dogfood_kl)/$recipes->kilocalorie)*$recipes->protein);
+        $carbohydrate = ((($se_dogcalorie-$se_dogfood_kl)/$recipes->kilocalorie)*$recipes->carbohydrate);
+        $fat = ((($se_dogcalorie-$se_dogfood_kl)/$recipes->kilocalorie)*$recipes->fat);
+        $vitamin = ((($se_dogcalorie-$se_dogfood_kl)/$recipes->kilocalorie)*$recipes->vitamin);
         
         $data = [
             "protein" => $protein,
