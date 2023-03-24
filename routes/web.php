@@ -43,16 +43,34 @@ Route::prefix('dogs')
  
 
  
- Route::prefix('recipes') 
+ Route::prefix('category') 
  ->middleware(['auth']) // 認証
- ->name('recipes.')// ルート名
+ ->name('category.')// ルート名
  ->controller(CategoryController::class) // コントローラ指定
  ->group(function(){ // グループ化
  Route::get('/', 'index')->name('index');//カテゴリー一覧
+//  Route::get('/{id}', 'show')->name('show');//レシピ一覧
+//  Route::get('/{id}/gorecipe', 'gorecipe')->name('gorecipe');//レシピ詳細
+//  Route::get('/{id}/chartall', 'chartall')->name('chartall');//合計グラフ
+ });
+ 
+ 
+ 
+ Route::prefix('recipes') 
+ ->middleware(['auth']) // 認証
+ ->name('recipes.')// ルート名
+ ->controller(RecipeController::class) // コントローラ指定
+ ->group(function(){ // グループ化
  Route::get('/{id}', 'show')->name('show');//レシピ一覧
  Route::get('/{id}/gorecipe', 'gorecipe')->name('gorecipe');//レシピ詳細
  Route::get('/{id}/chartall', 'chartall')->name('chartall');//合計グラフ
  });
+ 
+ 
+ 
+ 
+ 
+ 
  
  
  

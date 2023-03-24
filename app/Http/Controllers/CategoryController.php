@@ -21,12 +21,12 @@ class CategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index()//カテゴリー一覧画面
     {
         
         $categories = Category::all();
         
-         return view('recipes.index', ['categories' => $categories]);
+         return view('category.index', ['categories' => $categories]);
     }
 
     /**
@@ -58,17 +58,17 @@ class CategoryController extends Controller
      */
     public function show(Request $request, $id)
     {
-        $category= Category::find($id);
+        // $category= Category::find($id);
         
-        $recipes = $category->recipes;
+        // $recipes = $category->recipes;
     
         
-        $data = [
-            'category' => $category,
-            'recipes' => $recipes,
-        ];
+        // $data = [
+        //     'category' => $category,
+        //     'recipes' => $recipes,
+        // ];
         
-        return view('recipes.show', $data);
+        // return view('recipes.show', $data);
     }
 
     /**
@@ -79,31 +79,7 @@ class CategoryController extends Controller
      */
     public function gorecipe(Request $request,$id)
     {
-        $recipes= Recipe::find($id);
         
-        //セッションにrecipe->idを保存する　配列で！
-        // $array = ['recipe1' =>$recipes->id,'recipe2' =>'$recipes->id'];
-        $se_recipe_id = $request->session()->put('recipes_id', $recipes->id);
-        
-         //セッション取得
-        $se_dog_id = $request->session()->get('dog_id'); 
-        $se_dogfood_id = $request->session()->get('dogfood_id'); 
-        $se_recipe_id = $request->session()->get('recipes_id'); 
-        $se_dog_calorie = $request->session()->get('dogcalorie');
-        $se_intake = $request->session()->get('intake');
-        $se_dogfood_kl = $request->session()->get('dogfood_kl');
-        
-        
-        $data = [
-             'se_dogfood_kl' => $se_dogfood_kl,
-             'se_intake' => $se_intake,
-             'se_dog_calorie' => $se_dog_calorie,
-             'se_dog_id' => $se_dog_id,
-             'se_dogfood_id' => $se_dogfood_id,
-             'se_recipe_id' => $se_recipe_id,
-             'recipes' => $recipes,
-        ];
-        return view('recipes.gorecipe',$data);
     }
     
     

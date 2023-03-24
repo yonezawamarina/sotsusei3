@@ -1,10 +1,11 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-           {{$dog->name}}のドッグフード詳細
+           {{$dog->name}}のドッグフード詳細 
+        </h2>
         </h2>
         <div class="flex justify-end">
-         <form method="GET" action="{{ route('recipes.index') }}">
+         <form method="GET" action="{{ route('category.index') }}">
            <button class="flex mx-auto text-white bg-red-500 border-0 py-2 px-8 focus:outline-none hover:bg-red-600 rounded text-lg" type="submit">レシピ検索</button>
         </form>
         </div>
@@ -37,9 +38,9 @@
                                      <div class="flex flex-col items-center justify-center mt-10">
                                         <label for="inputIntake" class="leading-7 text-sm text-gray-600">ドッグフード量選択</label>
                                         <div class="flex">
-                                             <button id="all" class="flex mx-auto mr-2 text-white bg-yellow-500 border-0 py-2 px-8 focus:outline-none hover:bg-yellow-300 rounded text-lg">全量</button>
-                                             <button id="half" class="flex mx-auto mr-2 text-white bg-yellow-500 border-0 py-2 px-8 focus:outline-none hover:bg-yellow-300 rounded text-lg">1/2</button>
-                                             <button id="onethird" class="flex mx-auto text-white bg-yellow-500 border-0 py-2 px-8 focus:outline-none hover:bg-yellow-300 rounded text-lg">1/3</button>
+                                             <button id="all" type="button" class="flex mx-auto mr-2 text-white bg-yellow-500 border-0 py-2 px-8 focus:outline-none hover:bg-yellow-300 rounded text-lg">全量</button>
+                                             <button id="half" type="button"  class="flex mx-auto mr-2 text-white bg-yellow-500 border-0 py-2 px-8 focus:outline-none hover:bg-yellow-300 rounded text-lg">1/2</button>
+                                             <button id="onethird" type="button" class="flex mx-auto text-white bg-yellow-500 border-0 py-2 px-8 focus:outline-none hover:bg-yellow-300 rounded text-lg">1/3</button>
                                         </div>
                                     </div>
                                     
@@ -49,6 +50,8 @@
                                           <div class="flex rounded-md shadow-sm mt-6">
                                             <input type="number" id="inputIntake" name="intake" value="{{$intake}}" class="py-3 px-4 block  border-gray-200 shadow-sm rounded-l-md text-sm focus:z-10 focus:border-yellow-500 focus:ring-yellow-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400"><span>g</span>
                                           </div>
+                                          
+                                          <button type="submit" class=" text-white bg-yellow-500 border-0 py-1 px-8 focus:outline-none hover:bg-yellow-300 rounded text-lg">送信</button>
                                         </div>          
                               </form>
                     </div>
@@ -73,51 +76,35 @@
                </div>          
 
             <script>
-                
-                // ドッグフード選択で動的に必要量を表示  
-               function setInitialIntake(value){
-                   document.querySelector("#inputIntake").value = parseInt(value);
-               }
-               
-               
-               //1/2ボタンを押した時
-                  const button2 = document.getElementById('half');
-               // ボタンがクリックされたときの処理
-                  button2.addEventListener('click', function() {
-                  // インプットタグの要素を取得
-                 const input2 = document.getElementById('inputIntake');
-                
-                  // インプットタグの値を取得して数値に変換
-                  const inputValue = {{$intake}}
-                
-                  // 値を半分にする
-                  
-                 const halfValue = inputValue /2;
-                
-                  // インプットタグに結果を表示
-                  input2.value = parseInt(halfValue);
+              const inuptIntake = document.getElementById('inputIntake');
+                let originalIntake; // 選択変更したときの元の摂取量
+
+                // ドッグフード選択で動的に必要量を表示
+                function setInitialIntake(value){
+                    inuptIntake.value = parseInt(value);
+                    originalIntake = value;
+                }
+
+                // 全量ボタンが押されたとき
+                const button1 = document.getElementById('all')
+                button1.addEventListener('click', function () {
+                    // インプットタグに全量（元の摂取量）を表示
+                    inputIntake.value = originalIntake;
+                })
+
+                // 1/2ボタンがクリックされたときの処理
+                const button2 = document.getElementById('half');
+                button2.addEventListener('click', function() {                    
+                    // インプットタグに半分の量を表示
+                    inputIntake.value = parseInt(originalIntake / 2);
                 });
-                
-                
-                 //1/3ボタンを押した時
-                  const button3 = document.getElementById('onethird');
-               // ボタンがクリックされたときの処理
-                  button3.addEventListener('click', function() {
-                  // インプットタグの要素を取得
-                  const input3 = document.getElementById('inputIntake');
-                
-                  // インプットタグの値を取得して数値に変換
-                  const inputValue3 = Number(input3.value);
-                
-                  // 値を半分にする
-                  const halfValue3 = inputValue3 / 3;
-                  
-                  // インプットタグに結果を表示
-                  input3.value = parseInt(halfValue3);
+
+                // 1/3ボタンがクリックされたときの処理
+                const button3 = document.getElementById('onethird');
+                button3.addEventListener('click', function() {                  
+                    // インプットタグに結果を表示
+                    inputIntake.value = parseInt(originalIntake / 3);
                 });
-                 
-                 
-                 
                  
                      
                

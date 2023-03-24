@@ -9,8 +9,8 @@
 選択したレシピのビタミン量/100ｇ{{$recipes->vitamin}}</br>
 ★選択したレシピを残カロリー分食べた時のビタミン摂取量：{{(($se_dogcalorie-$se_dogfood_kl)/$recipes->kilocalorie)*$recipes->vitamin}}</br>
 @json($dog_food->getGraphData($intake))</br>
-@json($dog->getRequiredGraphData())</br>
-{{$intake}}</br>
+
+
 {{$recipes->recipeprotein}}</br>
 ★選択したレシピを残カロリー分食べた時の各栄養素摂取量</br>
 protein{{$protein}}</br>
@@ -24,7 +24,7 @@ carbohydrate{{$carbohydrate}}
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-         {{$dog->name}}のごはん一覧
+         {{session('dog')->name}}のごはん一覧
         </h2>
     </x-slot>
     

@@ -2,9 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Recipe;
 use App\Models\Category;
+use App\Models\Dog;
+use App\Models\DogFood;
+use App\Models\DogBreed;
+use App\Models\LifeStage;
+use App\Models\Recipe;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;//セッション追加
 
 class RecipeController extends Controller
 {
@@ -48,12 +53,48 @@ class RecipeController extends Controller
      * @param  \App\Models\Recipe  $recipe
      * @return \Illuminate\Http\Response
      */
-    public function show(Category $category)
+    
+    
+    
+    public function show(Request $request, $id)//カテゴリー別のレシピ一覧
     {
-        $recipes = $category->recipes;
+        $category= Category::find($id);
         
-        return view('recipes.index', compact('recipes', 'category'));
+        $recipes = $category->recipes;
+    
+        
+        $data = [
+            'category' => $category,
+            'recipes' => $recipes,
+        ];
+        
+        return view('recipes.show', $data);
     }
+    
+    
+    public function gorecipe(Recipe $recipe, Request $request, $id)//レシピ詳細
+    {
+        $recipes= Recipe::find($id);
+        
+        // //セッションにrecipe->idを保存する　配列で！
+        // // $array = ['recipe1' =>$recipes->id,'recipe2' =>'$recipes->id'];
+        // $se_recipe_id = $request->session()->put('recipes_id', $recipes->id);
+        // $recipes = $request->session()->get('recipes') ?? [];
+        
+        
+        
+        $data = [
+            
+            //  'se_recipe_id' => $se_recipe_id,
+             'recipes' => $recipes,
+        ];
+        return view('recipes.gorecipe',$data);
+        
+    }
+    
+    
+    
+    
 
     /**
      * Show the form for editing the specified resource.
