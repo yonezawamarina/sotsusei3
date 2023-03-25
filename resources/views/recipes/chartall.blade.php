@@ -1,25 +1,4 @@
 
-ドッグID取得:{{$se_dog_id}}</br>
-ドッグフードID取得:{{$se_dogfood_id}}</br> 
-レシピID取得:{{$se_recipe_id}} </br>
-ドッグフード量：{{$se_intake}}</br>
-1日の必要カロリー：{{$se_dogcalorie}}</br>
-ドッグフードでの摂取カロリー：{{$se_dogfood_kl}}</br>
-ドッグフードを食べたうえでの残カロリー：{{$se_dogcalorie-$se_dogfood_kl}}</br>
-選択したレシピのビタミン量/100ｇ{{$recipes->vitamin}}</br>
-★選択したレシピを残カロリー分食べた時のビタミン摂取量：{{(($se_dogcalorie-$se_dogfood_kl)/$recipes->kilocalorie)*$recipes->vitamin}}</br>
-@json($dog_food->getGraphData($intake))</br>
-
-
-{{$recipes->recipeprotein}}</br>
-★選択したレシピを残カロリー分食べた時の各栄養素摂取量</br>
-protein{{$protein}}</br>
-vitamin{{$vitamin}}</br>
-fat{{$fat}}</br>
-carbohydrate{{$carbohydrate}}
-
-
-
 @vite(['resources/css/app.css', 'resources/js/app.js'])
 <x-app-layout>
     <x-slot name="header">

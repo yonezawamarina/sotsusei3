@@ -56,7 +56,7 @@ class RecipeController extends Controller
     
     
     
-    public function show(Request $request, $id)//カテゴリー別のレシピ一覧
+    public function show(Request $request, $id)//レシピ一覧
     {
         $category= Category::find($id);
         
@@ -76,16 +76,12 @@ class RecipeController extends Controller
     {
         $recipes= Recipe::find($id);
         
-        // //セッションにrecipe->idを保存する　配列で！
-        // // $array = ['recipe1' =>$recipes->id,'recipe2' =>'$recipes->id'];
-        // $se_recipe_id = $request->session()->put('recipes_id', $recipes->id);
+     
         // $recipes = $request->session()->get('recipes') ?? [];
         
-        
+        $dog_id = session('dog')->id;
         
         $data = [
-            
-            //  'se_recipe_id' => $se_recipe_id,
              'recipes' => $recipes,
         ];
         return view('recipes.gorecipe',$data);
