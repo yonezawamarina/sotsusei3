@@ -11,6 +11,7 @@
   
     <body class="antialiased bg-yellow-500">
         <div class="flex justify-center items-center h-screen">
+            
             @if (Route::has('login'))
             
                 

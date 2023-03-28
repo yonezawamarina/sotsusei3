@@ -4,6 +4,8 @@
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
          {{session('dog')->name}}のごはん一覧
+         {{session('recipe')->name}}のごはん一覧
+         {{ session('recipes') ? session('recipes')->id : 'No Recipe Found' }}のののの
         </h2>
     </x-slot>
     
@@ -24,7 +26,7 @@
              
                       <!--レシピ追加ボタン-->
                       <div class="flex justify-end">
-                         <form method="GET" action="{{ route('recipes.index')}}">
+                      
                            <button class="flex mx-auto text-white bg-red-500 border-0 py-2 px-8 focus:outline-none hover:bg-red-600 rounded text-lg" type="submit">レシピ追加</button>
                         </form>
                       </div>

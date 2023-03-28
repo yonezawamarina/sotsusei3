@@ -3,6 +3,7 @@
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
             レシピ詳細
+            
         </h2>
     </x-slot>
 
@@ -23,14 +24,14 @@
       <p class="mb-8 leading-relaxed">{{$recipes->co}}</p>
       
       
-      
-      
-     
       <!--作るボタン-->
-    
+    <div class="flex justify-end">
+        
+        <form method="GET" action="{{ route('dogs.chart',['id'=>$dog_id])}}">  
+           <button class="flex mx-auto text-white bg-red-500 border-0 py-2 px-8 focus:outline-none hover:bg-red-600 rounded text-lg" type="submit">作る</button>
+        </form>
+    </div>
       
-     
-     
       
     </div>
   </div>

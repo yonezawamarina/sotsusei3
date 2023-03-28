@@ -1,7 +1,12 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-           {{$dog->name}}のドッグフード詳細 
+            
+             @if(session('recipes'))
+              {{ session('recipes')->name }}選択したレシピの名前
+            @endif
+          
+           {{session('dog')->name}}のごはん一覧
         </h2>
         </h2>
         <div class="flex justify-end">

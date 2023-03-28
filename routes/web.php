@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\DogfoodController;
 use App\Http\Controllers\RecipeController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\LineMessengerController;//LINE連携
 
 
 /*
@@ -51,7 +52,7 @@ Route::prefix('dogs')
  Route::get('/', 'index')->name('index');//カテゴリー一覧
 //  Route::get('/{id}', 'show')->name('show');//レシピ一覧
 //  Route::get('/{id}/gorecipe', 'gorecipe')->name('gorecipe');//レシピ詳細
-//  Route::get('/{id}/chartall', 'chartall')->name('chartall');//合計グラフ
+ Route::get('/{id}/chartall', 'chartall')->name('chartall');//合計グラフ
  });
  
  
@@ -63,12 +64,17 @@ Route::prefix('dogs')
  ->group(function(){ // グループ化
  Route::get('/{id}', 'show')->name('show');//レシピ一覧
  Route::get('/{id}/gorecipe', 'gorecipe')->name('gorecipe');//レシピ詳細
- Route::get('/{id}/chartall', 'chartall')->name('chartall');//合計グラフ
+//  Route::get('/{id}/chartall', 'chartall')->name('chartall');//合計グラフ
  });
  
  
  
  
+ //LINE連携
+ Route::get('/linelogin', [LineLoginController::class, 'linelogin'])->name('linelogin');
+Route::get('/callback', [LineLoginController::class, 'callback'])->name('callback');
+ Route::post('/line/webhook', [LineMessengerController::class, 'webhook'])->name('line.webhook');// LINE メッセージ受信
+ Route::get('/line/message', [LineMessengerController::class, 'message']);// LINE メッセージ送信用
  
  
  

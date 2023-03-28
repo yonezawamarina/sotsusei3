@@ -74,17 +74,32 @@ class RecipeController extends Controller
     
     public function gorecipe(Recipe $recipe, Request $request, $id)//レシピ詳細
     {
-        $recipes= Recipe::find($id);
         
-     
-        // $recipes = $request->session()->get('recipes') ?? [];
         
-        $dog_id = session('dog')->id;
         
-        $data = [
-             'recipes' => $recipes,
-        ];
-        return view('recipes.gorecipe',$data);
+          $recipes = Recipe::find($id);
+
+            if (!$recipes) {
+                return abort(404); // レシピが見つからなかった場合は404エラーを返す
+            }
+            
+            // $recipes = Recipe::all();
+            $dog_id = session('dog')->id;
+            
+            //セッションに保存する
+            $request->session()->put('recipes' , $recipes);
+            
+            $data = [
+                 'recipe' => $recipe, 
+                 'recipes' => $recipes,
+                 'dog_id' => $dog_id
+            ];
+            return view('recipes.gorecipe',$data);
+            // return redirect()->route('dogs.chart' , $dog_id);
+                
+        
+        
+       
         
     }
     
