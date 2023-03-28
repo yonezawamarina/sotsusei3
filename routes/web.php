@@ -73,7 +73,7 @@ Route::prefix('dogs')
  //LINE連携
  Route::get('/linelogin', [LineLoginController::class, 'linelogin'])->name('linelogin');
 Route::get('/callback', [LineLoginController::class, 'callback'])->name('callback');
- Route::post('/line/webhook', [LineMessengerController::class, 'webhook'])->name('line.webhook');// LINE メッセージ受信
+ Route::get('/line/webhook', [LineMessengerController::class, 'webhook'])->name('line.webhook');// LINE メッセージ受信
  Route::get('/line/message', [LineMessengerController::class, 'message']);// LINE メッセージ送信用
  
  
