@@ -1,30 +1,36 @@
 @vite(['resources/css/app.css', 'resources/js/app.js'])
-
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            レシピ一覧
+            レシピ詳細
+            
         </h2>
     </x-slot>
 
 <section class="text-gray-600 body-font">
-  <div class="container px-5 py-24 mx-auto">
-    <div class="flex flex-wrap -m-4">
+  <div class="container mx-auto flex px-5 py-24 md:flex-row flex-col items-center">
+    <div class="lg:max-w-lg lg:w-full md:w-1/2 w-5/6 mb-10 md:mb-0">
+      <img class="object-cover object-center rounded"  src="{{url('storage/images')}}/{{$recipe->image}}" width="500px">
+    </div>
+    <div class="lg:flex-grow md:w-1/2 lg:pl-24 md:pl-16 flex flex-col md:items-start md:text-left items-center text-center">
+      <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">{{$recipe->name}}</h1>
+      <p>材料 (100ｇあたり)</p>
+      <p class="mb-8 leading-relaxed">{{$recipe->material}}</p>
       
+      <p>作り方</p>
+      <p class="mb-8 leading-relaxed">{{$recipe->process}}</p>
+      
+      <p>コメント</p>
+      <p class="mb-8 leading-relaxed">{{$recipe->co}}</p>
+      
+      
+      <!--作るボタン-->
+    <div class="flex justify-end">
         
-    　@foreach ($recipes as $recipe)    
-      <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
-        <a class="block relative h-48 rounded overflow-hidden">
-          <img class="object-cover object-center w-full h-full block"  src="{{url('storage/images')}}/{{$recipe->image}}">
-          
-        </a>
-        <div class="mt-4">
-          <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">レシピ名</h3>  
-          <h2 class="text-gray-900 title-font text-lg font-medium"><a href="{{ route('recipes.gorecipe',['id'=>$recipe->id])}}">{{ $recipe->name }}</a></h2>
-         
-        </div>
-      </div>
-      @endforeach
+        <form method="GET" action="{{ route('recipes.gorecipe',['id'=>$recipe->id])}}">  
+           <button class="flex mx-auto text-white bg-red-500 border-0 py-2 px-8 focus:outline-none hover:bg-red-600 rounded text-lg" type="submit">作る</button>
+        </form>
+    </div>
       
       
     </div>

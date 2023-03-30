@@ -18,8 +18,9 @@ class RecipeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Category $category)
+    public function index(Request $request)
     {
+        $category = Category::findOrFail($request->category_id);
         $recipes = $category->recipes;
         return view('recipes.index', compact('recipes', 'category'));
     }
@@ -56,46 +57,48 @@ class RecipeController extends Controller
     
     
     
-    public function show(Request $request, $id)//レシピ一覧
+    public function show($id)//レシピ詳細
     {
-        $category= Category::find($id);
+        $recipe= Recipe::findOrFail($id);
         
-        $recipes = $category->recipes;
     
         
         $data = [
-            'category' => $category,
-            'recipes' => $recipes,
+            'recipe' => $recipe,
         ];
         
         return view('recipes.show', $data);
     }
     
     
-    public function gorecipe(Recipe $recipe, Request $request, $id)//レシピ詳細
+    public function gorecipe($id)//レシピ詳細
     {
         
         
         
-          $recipes = Recipe::find($id);
-
-            if (!$recipes) {
-                return abort(404); // レシピが見つからなかった場合は404エラーを返す
-            }
+            $recipe = Recipe::findOrFail($id);//これ使う
             
+            $recipes = session('recipes') ?? [];//
+             
+            $recipes[] = $recipe; 
+        
+        
             // $recipes = Recipe::all();
             $dog_id = session('dog')->id;
             
+            
+            
             //セッションに保存する
-            $request->session()->put('recipes' , $recipes);
+            session()->put('recipes' , $recipes);
+            
             
             $data = [
                  'recipe' => $recipe, 
                  'recipes' => $recipes,
                  'dog_id' => $dog_id
             ];
-            return view('recipes.gorecipe',$data);
-            // return redirect()->route('dogs.chart' , $dog_id);
+            // return view('recipes.gorecipe',$data);
+            return redirect()->route('dogs.chart' , $dog_id);
                 
         
         

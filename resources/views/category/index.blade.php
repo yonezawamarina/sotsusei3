@@ -24,7 +24,7 @@
               <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
             </svg>
           </div>
-          <h2 class="text-lg text-gray-900 font-medium title-font mb-2"> <a href="{{ route('recipes.show',['id'=>$category->id])}}">{{ $category->name }}</a></br></h2>
+          <h2 class="text-lg text-gray-900 font-medium title-font mb-2"> <a href="{{ route('recipes.index',['category_id'=>$category->id])}}">{{ $category->name }}</a></br></h2>
         </div>
       </div>
       @endforeach

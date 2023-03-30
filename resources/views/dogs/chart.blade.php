@@ -2,9 +2,7 @@
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
             
-             @if(session('recipes'))
-              {{ session('recipes')->name }}選択したレシピの名前
-            @endif
+            @dump(session("recipes"))
           
            {{session('dog')->name}}のごはん一覧
         </h2>
@@ -129,6 +127,8 @@
                             {
                                 label: "ドッグフードを食べた時の摂取量",
                                 data: @json($dog_food->getGraphData($intake)),
+                                
+                                
                                 backgroundColor: [
                                     "rgba(255,69,0,0.3)",
                                     
@@ -146,6 +146,7 @@
                             {
                                 label: "必要栄養素量",
                                 data: @json($dog->getRequiredGraphData()),
+                                
                                 backgroundColor: [
                                     
                                     "rgba(255,255,0,0.2)",
