@@ -6,6 +6,7 @@ use App\Models\Dog;
 use App\Models\DogFood;
 use App\Models\DogBreed;
 use App\Models\LifeStage;
+use App\Models\Recipe;
 use Illuminate\Support\Facades\Session;//セッション追加
 
 
@@ -186,6 +187,10 @@ class DogController extends Controller
         //ﾄﾞｯｸﾞﾌｰﾄﾞ全件取得(プルダウン用)
         $dog_foods = DogFood::get();
         
+        $recipe = Recipe::all();
+        
+        
+        
         //セッションに保存する
         $request->session()->put('dog' , $dog);
         $request->session()->put('dogfood' , $dog_food);
@@ -194,10 +199,12 @@ class DogController extends Controller
         
         //ビューにデータを渡す
         $data = [
+            "recipe" => $recipe,
             "dog" => $dog,
             "dog_food" => $dog_food,
             "dog_foods" => $dog_foods,
             "intake" => $intake,
+            "recipe" => $recipe,
             ];
             
         return view('dogs.chart',$data);    
