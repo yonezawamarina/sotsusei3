@@ -4,10 +4,10 @@
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
             レシピ詳細
         </h2>
-        
+        {{session('dog->calorie')}}のごはん一覧
+       
          <!--作るボタン-->
     <div class="flex justify-end">
-        
         <form method="GET" action="{{ route('recipes.gorecipe',['id'=>$recipe->id])}}">  
            <button class="flex mx-auto text-white bg-red-500 border-0 py-2 px-8 focus:outline-none hover:bg-red-600 rounded text-lg" type="submit">作る</button>
         </form>
@@ -84,33 +84,31 @@
    </div>
   </div>
   
-   
-   
-   
-   
-
   <div class="container flex flex-wrap px-5 mx-auto items-center">
     <div class="md:w-1/2 md:pr-12 md:py-8 md:border-r md:border-b-0 mb-10 md:mb-0 pb-10 border-b border-gray-200">
-      <h1 class="sm:text-3xl text-2xl font-medium title-font mb-2 text-gray-900">コメント</h1>
+      <h1 class="sm:text-3xl text-2xl font-medium title-font text-gray-900">コメント</h1>
       <p class="leading-relaxed text-base border-2 border-orange-500" style="border-style: double; border-width: 4px 0;">{{$recipe->co}}</p>
     </div>
   </div>
   
+  
+  
+  残カロリ($dog->calorie)-$intake/100*$dog_food->kilocalorie</br>
+  使うカロリー入力　それに応じて材料の分量がでる
+  計算方法⇒(使うカロリー÷100)×recipe->v
+
   <table>
   <tr>
-    <th>列1</th>
-    <th>列2</th>
-    <th>列3</th>
+    <th>材料名</th>
+    <th>分量</th>
   </tr>
   <tr>
-    <td>行1, 列1</td>
-    <td>行1, 列2</td>
-    <td>行1, 列3</td>
+    <td>〇〇</td>
+    <td>{{$recipe->material}}</td>
   </tr>
   <tr>
-    <td>行2, 列1</td>
-    <td>行2, 列2</td>
-    <td>行2, 列3</td>
+    <td>〇〇〇</td>
+    <td>{{$recipe->material}}</td>
   </tr>
 </table>
 

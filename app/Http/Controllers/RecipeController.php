@@ -60,11 +60,12 @@ class RecipeController extends Controller
     public function show($id)//レシピ詳細
     {
         $recipe= Recipe::findOrFail($id);
-        
-    
+        $dog=Dog::all();
         
         $data = [
             'recipe' => $recipe,
+            'dog' => $dog
+            
         ];
         
         return view('recipes.show', $data);

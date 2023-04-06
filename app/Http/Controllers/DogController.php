@@ -190,11 +190,11 @@ class DogController extends Controller
         $recipe = Recipe::all();
         
         
-        
         //セッションに保存する
         $request->session()->put('dog' , $dog);
         $request->session()->put('dogfood' , $dog_food);
         $request->session()->put('intake', $intake);
+        
         
         
         //ビューにデータを渡す
@@ -205,6 +205,7 @@ class DogController extends Controller
             "dog_foods" => $dog_foods,
             "intake" => $intake,
             "recipe" => $recipe,
+            
             ];
             
         return view('dogs.chart',$data);    
