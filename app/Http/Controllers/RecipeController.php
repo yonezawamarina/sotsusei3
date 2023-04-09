@@ -8,6 +8,7 @@ use App\Models\DogFood;
 use App\Models\DogBreed;
 use App\Models\LifeStage;
 use App\Models\Recipe;
+use App\Models\Material;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;//セッション追加
 
@@ -59,12 +60,17 @@ class RecipeController extends Controller
     
     public function show($id)//レシピ詳細
     {
+        $materials=Material::all();
+        // $recipe = Recipe::findOrFail($request->recipe_id);
+        // $materials = $recipe->materials;
+        // $materials= Material::findOrFail($id);
         $recipe= Recipe::findOrFail($id);
         $dog=Dog::all();
         
         $data = [
             'recipe' => $recipe,
-            'dog' => $dog
+            'dog' => $dog,
+            'materials' => $materials
             
         ];
         

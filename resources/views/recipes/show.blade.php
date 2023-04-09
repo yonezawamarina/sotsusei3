@@ -4,7 +4,7 @@
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
             レシピ詳細
         </h2>
-        {{session('dog->calorie')}}のごはん一覧
+        
        
          <!--作るボタン-->
     <div class="flex justify-end">
@@ -15,109 +15,102 @@
         
         
     </x-slot>
-
-<section class="text-gray-600 body-font">
-  <div class="container mx-auto flex px-5 py-2 md:flex-row flex-col items-center">
     
+    
+    
+<section class="text-gray-600 body-font">
+  <div class="container mx-auto flex px-18 md:flex-row flex-col items-center">
     
     <div class="lg:max-w-lg lg:w-full md:w-1/2 w-5/6 mb-10 md:mb-0">
+      <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900 inline-block border-b-4 border-orange-500 w-3/4">{{$recipe->name}}</h1>
       <img class="object-cover object-center rounded"  src="{{url('storage/images')}}/{{$recipe->image}}" width="500px">
     </div>
-    <div class="lg:flex-grow md:w-1/2 lg:pl-24 md:pl-16 flex flex-col md:items-start md:text-left items-center text-center">
-     
-      <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900 inline-block border-b-4 border-orange-500 w-3/4">{{$recipe->name}}</h1>
+    
+    
+    
+    
   
-
-      <p class="border-orange-500 inline-block border-b text-xl">材料 (100ｇあたり)</p>
-
-       <div class="flex flex-col md:w-1/2 md:pl-12">
-      <nav class="flex flex-wrap list-none -mb-1">
-        <li class="lg:w-1/3 mb-1 w-1/2">
-          <a class="text-gray-600 hover:text-gray-800">{{$recipe->material}}</a>
-        </li>
-        <li class="lg:w-1/3 mb-1 w-1/2">
-          <a class="text-gray-600 hover:text-gray-800">{{$recipe->material}}</a>
-        </li>
-        <li class="lg:w-1/3 mb-1 w-1/2">
-          <a class="text-gray-600 hover:text-gray-800">{{$recipe->material}}</a>
-        </li>
-        <li class="lg:w-1/3 mb-1 w-1/2">
-          <a class="text-gray-600 hover:text-gray-800">{{$recipe->material}}</a>
-        </li>
-        <li class="lg:w-1/3 mb-1 w-1/2">
-          <a class="text-gray-600 hover:text-gray-800">{{$recipe->material}}</a>
-        </li>
-        <li class="lg:w-1/3 mb-1 w-1/2">
-          <a class="text-gray-600 hover:text-gray-800">{{$recipe->material}}</a>
-        </li>
-        <li class="lg:w-1/3 mb-1 w-1/2">
-          <a class="text-gray-600 hover:text-gray-800">{{$recipe->material}}</a>
-        </li>
-        <li class="lg:w-1/3 mb-1 w-1/2">
-          <a class="text-gray-600 hover:text-gray-800">{{$recipe->material}}</a>
-        </li>
-      </nav>
-    </div>
-     
-      <p class="border-orange-500 inline-block border-b text-lg">作り方</p>
-      
-      <div style="display: flex; align-items: center;">
-        <p class="leading-relaxed text-base" style="flex-grow: 1;">1.{{$recipe->process}}</p>
-        <img class="object-cover object-center rounded" src="{{url('storage/images')}}/{{$recipe->image}}" width="100px" style="margin-left: 20px;">
+    
+   <div class="lg:flex-grow md:w-1/2 lg:pl-24 md:pl-16 flex flex-col md:items-start md:text-left items-center text-center">
+      <div class="container px-5 py-24 mx-auto">
+        <table class="table-auto w-full text-left whitespace-no-wrap border-gray-100 rounded-lg shadow-lg" style="border-collapse: collapse;">
+          <thead>
+            <tr>
+              <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-500 text-sm shadow-lg bg-amber-500  rounded-tl rounded-bl">材料名</th>
+              <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-500 text-sm shadow-lg bg-amber-500">分量</th>
+            </tr>
+          </thead>
+          <tbody>
+            @foreach ($materials as $material)   
+            <tr>
+              <td>{{ $material->name }}</td>
+              <td>{{(session('dog')->calorie - session('intake')/100*session('dogfood')->kilocalorie)/100*($material->amount)}}</td>
+            </tr>
+            @endforeach
+          </tbody>
+        </table>
       </div>
-      
-      <div style="display: flex; align-items: center; margin-top: 10px;">
-      <p class="leading-relaxed text-base" style="flex-grow: 1;">1.{{$recipe->process}}</p>
-      <img class="object-cover object-center rounded" src="{{url('storage/images')}}/{{$recipe->image}}" width="100px" style="margin-left: 20px;">
     </div>
-
-      <div style="display: flex; align-items: center; margin-top: 10px;">
-        <p class="leading-relaxed text-base" style="flex-grow: 1;">1.{{$recipe->process}}</p>
-        <img class="object-cover object-center rounded" src="{{url('storage/images')}}/{{$recipe->image}}" width="100px" style="margin-left: 20px;">
-      </div>
-
-      <div style="display: flex; align-items: center;">
-        <p class="leading-relaxed text-base" style="flex-grow: 1;">1.{{$recipe->process}}</p>
-        <img class="object-cover object-center rounded" src="{{url('storage/images')}}/{{$recipe->image}}" width="100px" style="margin-left: 20px;">
-      </div>
-  
-   </div>
-  </div>
-  
-  <div class="container flex flex-wrap px-5 mx-auto items-center">
-    <div class="md:w-1/2 md:pr-12 md:py-8 md:border-r md:border-b-0 mb-10 md:mb-0 pb-10 border-b border-gray-200">
-      <h1 class="sm:text-3xl text-2xl font-medium title-font text-gray-900">コメント</h1>
-      <p class="leading-relaxed text-base border-2 border-orange-500" style="border-style: double; border-width: 4px 0;">{{$recipe->co}}</p>
-    </div>
+    
   </div>
   
   
+    
+<section class="text-gray-600 body-font">
+    残り{{session('dog')->calorie - session('intake')/100*session('dogfood')->kilocalorie}}カロリー<br/>
+    <div>
+      <div class="flex rounded-md shadow-sm mt-6">
+        <input type="number" id="inputIntake" name="intake" value="" 
+        class="py-3 px-4 block  border-gray-200 shadow-sm rounded-l-md text-sm focus:z-10 focus:border-yellow-500 focus:ring-yellow-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400">カロリー
+      </div>
+      <button type="submit" class=" text-white bg-yellow-500 border-0 py-1 px-8 h-12 focus:outline-none hover:bg-yellow-300 rounded text-lg">送信</button>
+    </div>  
+</section>
   
-  残カロリ($dog->calorie)-$intake/100*$dog_food->kilocalorie</br>
-  使うカロリー入力　それに応じて材料の分量がでる
-  計算方法⇒(使うカロリー÷100)×recipe->v
-
-  <table>
-  <tr>
-    <th>材料名</th>
-    <th>分量</th>
-  </tr>
-  <tr>
-    <td>〇〇</td>
-    <td>{{$recipe->material}}</td>
-  </tr>
-  <tr>
-    <td>〇〇〇</td>
-    <td>{{$recipe->material}}</td>
-  </tr>
-</table>
-
+  
+  
+  
+  
   
 </section>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+
+
+
+
+
 </x-app-layout>
 
 
 
 
-  <!--fontawsome読み込みCDN-->
-  <script src="https://kit.fontawesome.com/e10693a884.js" crossorigin="anonymous"></script>
+
+  
+<script>
+  const form = document.querySelector('form');
+  form.addEventListener('submit', function(e) {
+    e.preventDefault(); // フォームの通常の送信を防止
+    const input = document.querySelector('#inputIntake');
+    const value = input.value; // 入力された値を取得
+    const td = document.createElement('td');
+    td.textContent = value; // テーブルの<td></td>に入力された値を表示
+    const tr = document.querySelector('tr:last-child'); // 最後の行を取得
+    tr.lastElementChild.appendChild(td); // 最後の行の最後のセルに<td>を追加
+    input.value = ''; // 入力欄を空にする
+  });
+</script>
+
