@@ -47,30 +47,30 @@ class Dog extends Model
     //この犬が１日に必要なたんぱく質量
      public function getRequiredProteinAttribute()
     {
-        return ($this->calorie)/1000*45;
+        return ($this->calorie)/1000*70;
     }
     
-    
+     //この犬が１日に必要な脂質量
+     public function getRequiredFatAttribute()
+    {
+        return ($this->calorie)/1000*70;
+    }
     
     //この犬が１日に必要なビタミン量
      public function getRequiredVitaminAttribute()
     {
-        return ($this->calorie)/1000*0.0089;
+        return ($this->calorie)/1000*75;
     }
     
     
     //この犬が１日に必要な炭水化物量
      public function getRequiredCarbohydrateAttribute()
     {
-        return ($this->calorie)/1000*45;
+        return ($this->calorie)/1000*70;
     }
     
     
-     //この犬が１日に必要な脂質量
-     public function getRequiredFatAttribute()
-    {
-        return ($this->calorie)/1000*13.8;
-    }
+    
        
        
             

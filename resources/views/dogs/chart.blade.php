@@ -52,7 +52,7 @@
                                                                 
                                                                   <div class="flex rounded-md shadow-sm py-12">
                                                                     <input type="number" id="inputIntake" name="intake" value="{{$intake}}" class="py-3 px-4 block w-full border-gray-200 shadow-sm rounded-l-md text-sm focus:z-10 focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400">
-                                                                    <button type="submit" class="py-3 px-4 inline-flex flex-shrink-0 justify-center items-center gap-2 rounded-r-md border border-transparent font-semibold shadow-lg bg-amber-500 shadow-amber-500/50 text-white hover:bg-yellow-300 focus:z-10 focus:outline-none focus:ring-2 focus:ring--500 transition-all text-sm">
+                                                                    <button type="submit" class="py-3 px-4 inline-flex flex-shrink-0 justify-center items-center gap-2 rounded-r-md border border-transparent font-semibold shadow-lg bg-amber-500 shadow-amber-500/50 text-white  text-sm">
                                                                       グラフ表示
                                                                     </button>
                                                                   </div>
@@ -70,7 +70,7 @@
                                   
           
           
-                                          <div class="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0"><!--ここから-->
+                                          <div class="lg:w-1/2 w-full lg:pl-10 lg:mt-6 lg:mt-0"><!--ここから-->
                                                   <div class="py-12">
                                                         <div class="max-w-7xl mx-auto sm:px-2 lg:px-2">
                                                             <div class="bg-gray-100 dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg w-full">
@@ -147,14 +147,16 @@
         data: {
             labels: ["タンパク質", "ビタミン", "脂質", "炭水化物"],
             datasets: [
-                {
-                    label: "ドッグフードを食べた時の摂取量",
-                    data: dog_food_data,
-                    backgroundColor: "rgba(255,0,77,0.5)",
-                    borderColor: "rgba(255,255,77,0.5)",
+            {
+                    label: "ドッグフードとレシピを食べた時の摂取量",
+                    data: stackedData,
+                    backgroundColor: "rgba(0, 255, 0, 0.5)",
+                    borderColor: "rgba(0, 255, 0, 0.5)",
                     borderWidth: 1,
                     stack: "Stack 0",
                 },
+                 
+               
                 {
                     label: "必要栄養素量",
                     data: dog_data,
@@ -163,7 +165,15 @@
                     borderWidth: 1,
                     stack: "Stack 0",
                 },
-                
+                 {
+                    label: "ドッグフードを食べた時の摂取量",
+                    data: dog_food_data,
+                    backgroundColor: "rgba(255,0,77,0.5)",
+                    borderColor: "rgba(255,255,77,0.5)",
+                    borderWidth: 1,
+                    stack: "Stack 0",
+                },
+                 
                 
             ],
         },

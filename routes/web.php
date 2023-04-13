@@ -66,6 +66,9 @@ Route::prefix('dogs')
  Route::get('/{id}', 'show')->name('show');//レシピ詳細
  Route::get('/{id}/gorecipe', 'gorecipe')->name('gorecipe');//レシピ選択
 //  Route::get('/{id}/chartall', 'chartall')->name('chartall');//合計グラフ
+Route::post('/save-intake', function() {
+  session(['intake' => request()->input('intake')]);
+});
  });
  
  

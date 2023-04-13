@@ -58,8 +58,9 @@ class RecipeController extends Controller
     
     
     
-    public function show($id)//レシピ詳細
+    public function show($id , Request $request)//レシピ詳細
     {
+        $request->session()->put('intake', $request->input('intake'));
         $materials=Material::all();
         // $recipe = Recipe::findOrFail($request->recipe_id);
         // $materials = $recipe->materials;
