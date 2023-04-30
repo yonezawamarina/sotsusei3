@@ -21,52 +21,6 @@ class Recipe extends Model
     } 
     
     
-    
-    
-    //ここから栄養素計算
-     public function getRecipeProteinAttribute(){
-        return ($this->vitamin*10);
-    }
-    
-    
-    
-    public function getproteinAmount()
-    {
-        return $this->protein;
-    }
-    
-    public function getfatAmount()
-    {
-        return $this->fat;
-    }
-    
-    public function getvitaminAmount()
-    {
-        return $this->vitamin;
-    }
-    
-    public function getcarbohydrateAmount()
-    {
-        return $this->carbohydrate;
-    }
-    
-    
-    
-    
-    
-    
-    
-     public function getRecipeGraphData()
-    {
-        $data = [
-            $this->proteinAmount,
-            $this->fatAmount,
-            $this->vitaminAmount,
-            $this->carbohydrateAmount,
-        ];
-        
-        return $data;
-    }
-    
-    
+  
+   
 }

@@ -147,15 +147,7 @@
         data: {
             labels: ["タンパク質", "ビタミン", "脂質", "炭水化物"],
             datasets: [
-            {
-                    label: "ドッグフードとレシピを食べた時の摂取量",
-                    data: stackedData,
-                    backgroundColor: "rgba(0, 255, 0, 0.5)",
-                    borderColor: "rgba(0, 255, 0, 0.5)",
-                    borderWidth: 1,
-                    stack: "Stack 0",
-                },
-                 
+            
                
                 {
                     label: "必要栄養素量",

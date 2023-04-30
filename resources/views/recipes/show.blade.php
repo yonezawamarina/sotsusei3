@@ -52,7 +52,7 @@
             </tr>
           </thead>
           <tbody>
-            @foreach ($materials as $material)   
+            @foreach ($recipe->materials as $material)   
             <tr>
               <td>{{ $material->name }}</td>
               <td>{{(session('dog')->calorie - session('intake')/100*session('dogfood')->kilocalorie)/100*($material->amount)}}</td>

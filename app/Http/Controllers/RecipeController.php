@@ -61,16 +61,16 @@ class RecipeController extends Controller
     public function show($id , Request $request)//レシピ詳細
     {
         $request->session()->put('intake', $request->input('intake'));
-        $materials=Material::all();
+        // $materials->materials;
         // $recipe = Recipe::findOrFail($request->recipe_id);
         // $materials = $recipe->materials;
-        // $materials= Material::findOrFail($id);
+        $materials= Material::findOrFail($id);
         $recipe= Recipe::findOrFail($id);
-        $dog=Dog::all();
+        // $dog=Dog::all();
         
         $data = [
             'recipe' => $recipe,
-            'dog' => $dog,
+            // 'dog' => $dog,
             'materials' => $materials
             
         ];
@@ -79,7 +79,7 @@ class RecipeController extends Controller
     }
     
     
-    public function gorecipe($id)//レシピ詳細
+    public function gorecipe($id, Request $request)//レシピ詳細
     {
         
         
